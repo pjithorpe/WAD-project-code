@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+{% load staticfiles %}
+
+<html>
+    
+    <head lang='en'>
+		<meta charset='UTF-8' />
+		<link rel="stylesheet" href="{% static 'css/factorfiction.css' %}">
+		<Title>Fact or Fiction</Title>
+	</head>
+	
+	<body>
+		<div class="header">
+			<img src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
+			<h1>FACTorFiction</h1>
+		</div>
+		
+		<div class="NavBar">
+			<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">FoF Game</a></li>
+					<li><a href="">Submit</a></li>
+					<li><a href="">Search</a></li>
+					<li><a href="">About</a></li>
+					<li id="myProfile"><a href="">My Profile</a></li>
+			</ul>
+		</div>
+		
+		<div>
+			{% block main_body_block %}
+			{% endblock %}
+		</div>
+		<div>
+			{% block sidebar_block %}
+			{% endblock %}
+		</div>
+    </body>
+
+</html>
