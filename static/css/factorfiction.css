@@ -63,5 +63,26 @@ body{
 
 .NavBar #myProfile{
 	position:relative;
-    left: 235px;
+    left: 100%;
+}
+
+.sidebar{
+	float: right;
+	height: 50em;
+	width: 20%;
+}
+
+#trending{
+	height: 65%;
+	border-style: outset;
+	margin: 5%;
+}
+
+#signin{
+	border-style: outset;
+	margin: 5%;
+	padding: 10%;
+	position: relative;
+	bottom: 0px;
+	height: 20%;
 }
