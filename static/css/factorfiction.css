@@ -1,12 +1,14 @@
 body{
-	margin-top:100px;
-	margin-left:200px;
-	margin-right:200px;
+	margin-top:30px;
+	margin-left:50px;
+	margin-right:50px;
 }
 
 .header{
 	border-bottom: solid;
 	padding-bottom: 5px;
+	overflow: hidden;
+	white-space: nowrap;
 	}
 
 .header img{	
@@ -19,8 +21,8 @@ body{
 .header h1{
 	font: x-large sans-serif;
 	font-size: 60px;
-	position:relative;
-	top:45px;
+	position: relative;
+	top: 45px;
 }
 
 .header img,
@@ -28,54 +30,60 @@ body{
 	display: inline-block;
 }
 	
-.NavBar{
+.navBar{
 	width: auto;
 	height: 60px;
 	font-family: Tahoma, Geneva, sans-serif;
 	text-align: center;
+	padding-top: 10px;
 	margin-bottom: 20px;
 	border-bottom: solid;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
-.NavBar ul{
+.navBar ul{
 	position: absolute;
-    left: 180px;
+    left: 20px;
 	list-style: none;
-	height: auto;
 	padding: 8px 0;
 	margin: 0;
+	min-width: 600px;
 }
 	
-.NavBar li {
+.navBar li {
 	display: inline-block;
-    padding: 20px;
+    padding-left: 20px;
 	font-size: 25px;
 }
 
-.NavBar a{
+.navBar a{
 	text-decoration: none;
 	color: black;
 }
 
-.NavBar a:hover{
+.navBar a:hover{
 	color: red;
 }
 
-.NavBar #myProfile{
-	position:relative;
-    left: 100%;
+.navBar #myProfile{
+	text-align: right;
+	position: relative;
+	margin-right: 60px;
 }
 
 .sidebar{
 	float: right;
 	height: 50em;
 	width: 20%;
+	min-width: 250px;
 }
 
 #trending{
 	height: 65%;
 	border-style: outset;
 	margin: 5%;
+	padding: 10%;
 }
 
 #signin{
