@@ -49,6 +49,8 @@ body{
 	padding: 8px 0;
 	margin: 0;
 	min-width: 600px;
+    display: inline-block;
+    vertical-align: middle;
 }
 	
 .navBar li {
@@ -66,7 +68,14 @@ body{
 	color: red;
 }
 
+.navBar #mainNav{
+	float:left;
+	text-align: left;
+	position: relative;
+}
+
 .navBar #myProfile{
+	float:right;
 	text-align: right;
 	position: relative;
 	margin-right: 60px;
