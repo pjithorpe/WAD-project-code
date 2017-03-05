@@ -7,5 +7,6 @@ from django.conf import settings
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'^factorfiction/', include('factorfiction.urls')),
+	url(r'^fofgame/', views.fofgame, name='fofgame'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

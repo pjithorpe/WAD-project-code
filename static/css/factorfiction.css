@@ -103,3 +103,88 @@ body{
 	bottom: 0px;
 	height: 20%;
 }
+
+.current_article{
+	border-style: ridge;
+	margin-top: 3%;
+	width: 75%;
+	height: 500px;
+	position: relative;
+}
+
+.current_article h1{
+	position: absolute;
+	margin-left: 3%;
+}
+
+.current_article p{
+	position: absolute;
+	top: 8%;
+	margin: 3%;
+}
+
+.current_article #article_picture{
+	width: 50%;
+	height: 60%;
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
+}
+
+.current_article #scale{
+	width: 30%;
+	height: 30%;
+	margin: 3%;
+	position: absolute;
+	bottom: 25%;
+	left: 5%;
+}
+
+.current_article #posted_by{
+	position: absolute;
+	top: 87%;
+}
+
+.current_article #scale_fact{
+	font-size: 175%;
+	position: absolute;
+	top: 65%;
+	left: 5%;
+}
+
+.current_article #scale_fiction{
+	font-size: 175%;
+	position: absolute;
+	top: 65%;
+	left: 26%;
+}
+
+
+.current_article #game_or{
+	font-size: 200%;
+	padding-left: 5%;
+	padding-right: 5%;
+	position: absolute;
+	top: 50%;
+	left: 8%;
+}
+
+.current_article #game_fact{
+	background-color: #0066ff;
+	font-size: 300%;
+	padding: 30px;
+	border-radius: 15%;
+	position: absolute;
+	top: 32%;
+	left: 10%;
+}
+
+.current_article #game_fiction{
+	background-color: #ff1a1a;
+	font-size: 300%;
+	padding: 30px;
+	border-radius: 15%;
+	position: absolute;
+	top: 65%;
+	left: 7.5%;
+}

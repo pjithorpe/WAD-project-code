@@ -3,3 +3,6 @@ from django.http import HttpResponse
 
 def index(request):
 	return render(request, 'factorfiction/index.html',)
+	
+def fofgame(request):
+	return render(request, 'factorfiction/fofgame.html',)
