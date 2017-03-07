@@ -177,6 +177,11 @@ body{
 	position: absolute;
 	top: 32%;
 	left: 10%;
+	transition-duration: 0.4s;
+}
+
+.current_article #game_fact:hover{
+	background-color: #8eb8ff;
 }
 
 .current_article #game_fiction{
@@ -187,4 +192,9 @@ body{
 	position: absolute;
 	top: 65%;
 	left: 7.5%;
+	transition-duration: 0.4s;
+}
+
+.current_article #game_fiction:hover{
+	background-color: #ff7f7f;
 }
