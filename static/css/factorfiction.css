@@ -108,7 +108,7 @@ body{
 	border-style: ridge;
 	margin-top: 3%;
 	width: 75%;
-	height: 500px;
+	height: 600px;
 	position: relative;
 }
 
@@ -117,9 +117,20 @@ body{
 	margin-left: 3%;
 }
 
+.current_article #game_title{
+	position: absolute;
+	margin-left: 3%;
+}
+
 .current_article p{
 	position: absolute;
 	top: 8%;
+	margin: 3%;
+}
+
+.current_article #game_description{
+	position: absolute;
+	top: 10%;
 	margin: 3%;
 }
 
@@ -165,8 +176,8 @@ body{
 	padding-left: 5%;
 	padding-right: 5%;
 	position: absolute;
-	top: 50%;
-	left: 8%;
+	top: 48%;
+	left: 6%;
 }
 
 .current_article #game_fact{
@@ -191,10 +202,53 @@ body{
 	border-radius: 15%;
 	position: absolute;
 	top: 65%;
-	left: 7.5%;
+	left: 8%;
 	transition-duration: 0.4s;
 }
 
 .current_article #game_fiction:hover{
 	background-color: #ff7f7f;
+}
+
+#answer {
+	border-style: ridge;
+	width: 50%;
+	height: 60%;
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
+}
+#your_answer{
+	position: absolute;
+	top: 5%;
+	left: 5%;
+}
+
+#current_answer{
+	position: absolute;
+	top: 25%;
+	left: 5%;
+}
+
+#current_answer_fact{
+	position: absolute;
+	top: 40%;
+	left: 5%;
+}
+
+#current_answer_fiction{
+	position: absolute;
+	top: 55%;
+	left: 5%;
+}
+
+#answer #game_next{
+	background-color: white;
+	font-size: 150%;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius: 15%;
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
 }
