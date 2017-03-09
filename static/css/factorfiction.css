@@ -120,6 +120,8 @@ body{
 .current_article #game_title{
 	position: absolute;
 	margin-left: 3%;
+	font-family: Verdana, Geneva, sans-serif
+	font-size: 75%;
 }
 
 .current_article p{
@@ -130,8 +132,10 @@ body{
 
 .current_article #game_description{
 	position: absolute;
-	top: 10%;
+	top: 13%;
 	margin: 3%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%
 }
 
 .current_article #article_picture{
@@ -154,6 +158,7 @@ body{
 .current_article #posted_by{
 	position: absolute;
 	top: 87%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 .current_article #scale_fact{
@@ -178,6 +183,7 @@ body{
 	position: absolute;
 	top: 48%;
 	left: 6%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 .current_article #game_fact{
@@ -188,7 +194,7 @@ body{
 	position: absolute;
 	top: 32%;
 	left: 10%;
-	transition-duration: 0.4s;
+	transition-duration: 0.3s;
 }
 
 .current_article #game_fact:hover{
@@ -203,7 +209,7 @@ body{
 	position: absolute;
 	top: 65%;
 	left: 8%;
-	transition-duration: 0.4s;
+	transition-duration: 0.3s;
 }
 
 .current_article #game_fiction:hover{
@@ -217,33 +223,37 @@ body{
 	position: absolute;
 	bottom: 10%;
 	right: 5%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 #your_answer{
 	position: absolute;
 	top: 5%;
 	left: 5%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 #current_answer{
 	position: absolute;
-	top: 25%;
+	top: 30%;
 	left: 5%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 #current_answer_fact{
 	position: absolute;
-	top: 40%;
+	top: 45%;
 	left: 5%;
 }
 
 #current_answer_fiction{
 	position: absolute;
-	top: 55%;
+	top: 60%;
 	left: 5%;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
-#answer #game_next{
-	background-color: white;
+#game_next{
+	background-color: #65f22e;
 	font-size: 150%;
 	padding-left: 30px;
 	padding-right: 30px;
@@ -251,4 +261,9 @@ body{
 	position: absolute;
 	bottom: 10%;
 	right: 5%;
+	transition-duration: 0.3s;
+}
+
+#game_next:hover{
+	background-color: #5bff66;
 }
