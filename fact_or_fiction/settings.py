@@ -53,6 +53,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'fact_or_fiction.urls'
 
 TEMPLATES = [
