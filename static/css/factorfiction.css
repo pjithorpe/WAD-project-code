@@ -1,107 +1,69 @@
-body{
-	margin-top:30px;
-	margin-left:50px;
-	margin-right:50px;
+#title-container {
+	margin-bottom: 10px;
 }
 
-.header{
-	border-bottom: solid;
-	padding-bottom: 5px;
-	overflow: hidden;
-	white-space: nowrap;
-	}
-
-.header img{	
-	float: left;
-	width: 150px;
-	height: 150px;
-	margin-right: 20px;
-	}
-
-.header h1{
-	font: x-large sans-serif;
-	font-size: 60px;
-	position: relative;
-	top: 45px;
+#logo {
+    width: 100px;'
 }
 
-.header img,
-.header h1{
-	display: inline-block;
+body {
+	margin-left: 5% !important;
+	margin-right: 5% !important;
 }
-	
-.navBar{
-	width: auto;
-	height: 60px;
-	font-family: Tahoma, Geneva, sans-serif;
-	text-align: center;
+
+.headerDiv {
 	padding-top: 10px;
-	margin-bottom: 20px;
-	border-bottom: solid;
-	overflow: hidden;
-	white-space: nowrap;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
 }
 
-.navBar ul{
-	position: absolute;
-    left: 20px;
-	list-style: none;
-	padding: 8px 0;
-	margin: 0;
-	min-width: 600px;
-    display: inline-block;
-    vertical-align: middle;
-}
-	
-.navBar li {
-	display: inline-block;
-    padding-left: 20px;
-	font-size: 25px;
+.headerDiv div {
+	display:table-cell;
 }
 
-.navBar a{
-	text-decoration: none;
-	color: black;
-}
-
-.navBar a:hover{
-	color: red;
-}
-
-.navBar #mainNav{
-	float:left;
-	text-align: left;
+.titleDiv {
 	position: relative;
+	top: 30px;
+	width:100%;
 }
 
-.navBar #myProfile{
-	float:right;
-	text-align: right;
-	position: relative;
-	margin-right: 60px;
+
+.navbar-default {
+  background-color: #ffffff !important;
+  border-top-color: #000000 !important;
+  border-bottom-color: #000000 !important;
+  border-left-color: #ffffff !important;
+  border-right-color: #ffffff !important;
+  border-radius: 0px !important;
 }
 
-.sidebar{
-	float: right;
-	height: 50em;
-	width: 20%;
-	min-width: 250px;
+.navbar-default .navbar-text {
+  color: #000000;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #000000 !important;
+  font-size: 14pt !important;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: red !important;
 }
 
 #trending{
-	height: 65%;
+	float: right;
+	min-width: 200px;
 	border-style: outset;
 	margin: 5%;
 	padding: 10%;
 }
 
 #signin{
+	min-width: 200px;
+	float: right;
 	border-style: outset;
 	margin: 5%;
 	padding: 10%;
-	position: relative;
-	bottom: 0px;
-	height: 20%;
 }
 
 .current_article{

@@ -5,53 +5,72 @@
 <html>
     
     <head lang='en'>
-		<meta charset='UTF-8' />
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" href="{% static 'css/factorfiction.css' %}">
-		<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<script src="{% static 'js/game.js' %}"></script>
+		
 		<Title>Fact or Fiction</Title>
 	</head>
-	
+
 	<body>
-		<div class="header">
-			<img src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
-			<h1>FACTorFICTION</h1>
-		</div>
-		
-		<div class="navBar">
-			<ul id="mainNav">
-				<li><a href="">Home</a></li>
-				<li><a href="/fofgame">FoF Game</a></li>
-				<li><a href="/factorfiction/submit_page/">Submit</a></li>
-				<li><a href="">Search</a></li>
-				<li><a href="">About</a></li>
-			</ul>
-			<ul id="myProfile">
-				<li><a href="">My Profile</a></li>
-			</ul>
-		</div>
-		
-		<div class="sidebar">
-			<div id="trending">
-				<p>Trending Posts</p>
+		<div class="headerDiv">
+			<div>
+				<img id="logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
 			</div>
-			<div id="signin">
-				<p>Sign in</p>
-					Username: <input type='text' name='username' value="" size='20' />
-					<br />
-					Password: <input type='password' name='password' value="" size='20' />
-					<br />
+			<div class="titleDiv">
+				<h1 id="title">FACTorFICTION</h1>
 			</div>
 		</div>
 		
-		<div>
-			{% block main_body_block %}
-			{% endblock %}
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li><a href="/fofgame">FoF Game</a></li>
+					<li><a href="/factorfiction/submit_page/">Submit</a></li>
+					<li><a href="#">Search</a></li>
+					<li><a href="#">About</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href=""><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="container-fluid">
+					{% block main_body_block %}
+					{% endblock %}
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="container-fluid">
+					<div id="trending">
+						<p>Trending Posts</p>
+					</div>
+					<div id="signin">
+						<p>Sign in</p>
+							Username: <input type='text' name='username' value="" size='20' />
+							<br />
+							Password: <input type='password' name='password' value="" size='20' />
+							<br />
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			{% block sidebar_block %}
-			{% endblock %}
-		</div>
+		
     </body>
 
 </html>
