@@ -231,6 +231,23 @@ body {
 	background-color: #5bff66;
 	cursor: pointer;
 }
+
+#game_home{
+	background-color: #65f22e;
+	font-size: 150%;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius: 15%;
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
+	transition-duration: 0.3s;
+}
+
+#game_home:hover{
+	background-color: #5bff66;
+	cursor: pointer;
+}
 	
 
 #game_picture{
