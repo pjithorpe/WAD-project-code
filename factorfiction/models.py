@@ -25,6 +25,27 @@ class Page(models.Model):
 
     def __unicode__(self):
         return self.title
+		
+class GameArticle(models.Model):
+	title = models.CharField(max_length=128)
+	description = models.CharField(max_length=5000)
+	answer = models.CharField(max_length=7)
+	fact = models.IntegerField(default=0)
+	fiction = models.IntegerField(default=0)
+	picture = models.CharField(max_length=128)
+	
+	def save(self, *args, **kwargs):
+		super(GameArticle, self).save(*args, **kwargs)
+
+	class Meta:
+		verbose_name_plural = 'GameArticles'
+
+	def __str__(self):
+		return self.title
+
+	def __unicode__(self):
+		return self.title
+
 
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.

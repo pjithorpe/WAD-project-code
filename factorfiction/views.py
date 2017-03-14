@@ -6,7 +6,7 @@ def index(request):
 	return render(request, 'factorfiction/index.html',)
 	
 def fofgame(request):
-	return render(request, 'factorfiction/fofgame.html')
+	return render(request, 'factorfiction/fofgame.html')	
 	
 def submit_page(request):
 	form = PageForm()

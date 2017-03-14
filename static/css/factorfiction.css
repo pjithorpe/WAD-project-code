@@ -54,22 +54,22 @@ body {
 	float: right;
 	min-width: 200px;
 	border-style: outset;
-	margin: 5%;
 	padding: 10%;
 }
 
 #signin{
 	min-width: 200px;
 	float: right;
+	margin-top: 5%;
 	border-style: outset;
-	margin: 5%;
 	padding: 10%;
+	
 }
 
 .current_article{
 	border-style: ridge;
 	margin-top: 3%;
-	width: 75%;
+	margin-bottom: 5%;
 	height: 600px;
 	position: relative;
 }
@@ -80,10 +80,10 @@ body {
 }
 
 .current_article #game_title{
-	position: absolute;
+	position: relative;
 	margin-left: 3%;
-	font-family: Verdana, Geneva, sans-serif
-	font-size: 75%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 225%;
 }
 
 .current_article p{
@@ -93,9 +93,8 @@ body {
 }
 
 .current_article #game_description{
-	position: absolute;
-	top: 13%;
-	margin: 3%;
+	position: relative;
+	margin-top:1%;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 85%
 }
@@ -143,7 +142,7 @@ body {
 	padding-left: 5%;
 	padding-right: 5%;
 	position: absolute;
-	top: 48%;
+	top: 50%;
 	left: 6%;
 	font-family: Verdana, Geneva, sans-serif;
 }
@@ -161,6 +160,7 @@ body {
 
 .current_article #game_fact:hover{
 	background-color: #8eb8ff;
+	cursor: pointer;
 }
 
 .current_article #game_fiction{
@@ -176,6 +176,7 @@ body {
 
 .current_article #game_fiction:hover{
 	background-color: #ff7f7f;
+	cursor: pointer;
 }
 
 #answer {
@@ -228,4 +229,14 @@ body {
 
 #game_next:hover{
 	background-color: #5bff66;
+	cursor: pointer;
+}
+	
+
+#game_picture{
+	width: 50%;
+	height: 60%;
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
 }
