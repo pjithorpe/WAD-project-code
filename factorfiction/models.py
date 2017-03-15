@@ -48,7 +48,6 @@ class GameArticle(models.Model):
 
 
 class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
     # The additional attributes we wish to include.
     name = models.CharField(max_length=128)
