@@ -8,7 +8,7 @@
 {% block main_body_block %}
 	<h1>Submit a new article to FACTorFICTION!</h1>
 	<div>
-		<form id="page_form" method = "post" action="/factorfiction/submit_page/">
+		<form id="page_form" method = "post" action="{% url 'submit_page' %}">
 			{% csrf_token %}
 			{% for hidden in form.hidden_fields %}
 				{{ hidden }}

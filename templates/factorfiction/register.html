@@ -1,0 +1,24 @@
+{% extends 'factorfiction/base.html' %}
+{% load staticfiles %}
+
+<title> 
+	Register 
+</title>
+
+{% block main_body_block %}
+	<h1>Register a User Account with FACTorFICTION!</h1>
+	<div>
+		{% if registered %}
+			Thank you for registering!
+			<a href="/factorfiction/"> Return to the homepage.</a><br />
+		{% else %}
+		<form id="user_form" method = "post" action="{% url 'register' %}" 
+		enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ user_form.as_p }}
+			{{ profile_form.as_p }}
+			<input type="submit" name="submit" value="Register"/>
+		</form>
+		{% endif %}
+	</div>
+{% endblock %}
