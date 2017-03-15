@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from factorfiction.models import Page
+from factorfiction.models import Page, UserProfile
 
 class PageForm(forms.ModelForm):
 	title = forms.CharField(max_length=128,help_text="Please enter the page title.")
@@ -23,3 +23,15 @@ class PageForm(forms.ModelForm):
 				url = 'http://' + url
 				cleaned_data['url'] = url
 				return cleaned_data
+				
+class UserForm(forms.ModelForm):
+	password = forms.CharField(widget = forms.PasswordInput())
+	
+	class Meta:
+		model = User
+		fields = ('username','email','password')
+		
+class UserProfileForm(forms.ModelForm):
+	class Meta:
+		model = UserProfile
+		fields = ('age','website','picture')
