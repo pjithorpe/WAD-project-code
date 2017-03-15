@@ -1,0 +1,33 @@
+{% extends 'factorfiction/base.html' %}
+{% load staticfiles %}
+
+<title> 
+	Search Articles
+</title>
+
+{% block main_body_block %}
+	<div>
+		<h1>Search through all FACTorFICTION articles</h1>
+		<form method = "post" action="/factorfiction/search/">
+			{% csrf_token %}
+			<p>Search terms: </p><input type="text" name="terms">
+			<p>User: </p><input type="text" name="postedBy">
+			<input type="submit" name="search" value="Search"/>
+		</form>
+	</div>
+	
+	<div>
+		{% if articles %}
+			<h2>Search Results</h2>
+			<ul>
+				{% for article in articles %}
+					<li>
+						<h3>{{ article.title }}</h1>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>There are no articles present.</strong><br />
+		{% endif %}
+	</div>
+{% endblock %}

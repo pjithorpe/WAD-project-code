@@ -3,14 +3,45 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from factorfiction.forms import PageForm, UserForm, UserProfileForm
-from factorfiction.models import UserProfile
+from factorfiction.models import UserProfile, Page
 
 def index(request):
 	return render(request, 'factorfiction/index.html',)
 	
 def fofgame(request):
 	return render(request, 'factorfiction/fofgame.html')
+
+def about(request):
+	return render(request, 'factorfiction/about.html')
+
+def search(request):
+	if request.method == 'POST':
+	
+		terms = request.POST.get('terms', None)
+		postedBy = request.POST.get('postedBy', None)
+		
+		try:
+			term_list = terms.split(' ')
+			term_list.extend(postedBy)
+	
+			articles_list = Page.objects.all()
+	
+			q = Q(title__icontains=term_list[0]) | Q(postedBy__icontains=term_list[0])
+	
+			for term in term_list[1:]:
+				q.add((Q(title__icontains=term) | Q(postedBy__icontains=term)), q.connector)
+	
+			articles_list = articles_list.filter(q)
+			
+			context_dict = {'articles': articles_list}
+	
+			return render(request, 'factorfiction/search.html', context_dict)
+		except Page.DoesNotExist:
+			return HttpResponse("No articles found.")
+	else:
+		return render(request, 'factorfiction/search.html')
 
 @login_required
 def submit_page(request):
