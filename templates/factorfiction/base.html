@@ -32,6 +32,24 @@
 			<div class="titleDiv">
 				<h1 id="title">FACTorFICTION</h1>
 			</div>
+			<div id = "share-buttons">
+				<!-- Facebook -->
+				<a href="http://www.facebook.com/sharer.php?u=http:/{% url 'index' %}" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+				</a>
+				<!-- Twitter -->
+				<a href="https://twitter.com/share?url=http:/{% url 'index' %}&amp;text=FactOrFiction&amp;hashtags=FoF" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+				</a>
+				<!-- Google+ -->
+				<a href="https://plus.google.com/share?url=http:/{% url 'index' %}" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+				</a>
+				<!-- Reddit -->
+				<a href="http://reddit.com/submit?url=http:/{% url 'index' %}&amp;title=Fact Or Fiction" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+				</a>
+			</div>
 		</div>
 		
 		<nav class="navbar navbar-default">
@@ -69,6 +87,7 @@
 					<div id="trending">
 						<p>Trending Posts</p>
 					</div>
+
 					<div id="signin">
 						{% if user.is_authenticated %}
 						<!-- Have left the old sign in object here in case my implementation is wrong
@@ -84,9 +103,9 @@
 							<p>Sign in</p>
 							<form id="login_form" method="post" action="{% url 'login' %}">
 								{% csrf_token %}
-								Username: <input type="text" name="username" value="" size="50" />
+								Username: <input type="text" name="username" value="" size="25" />
 								<br />
-								Password: <input type="password" name="password" value="" size="50" />
+								Password: <input type="password" name="password" value="" size="25" />
 								<br />
 								<input type="submit" value="Submit" />
 							</form>

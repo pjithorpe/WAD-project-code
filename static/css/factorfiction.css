@@ -28,6 +28,20 @@ body {
 	width:100%;
 }
 
+#share-buttons{
+	display:inline-block;
+	position: relative;
+	left: 85%;
+}
+
+#share-buttons img {
+	width: 40px;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	display:inline-block;
+	white-space:nowrap;
+}
 
 .navbar-default {
   background-color: #ffffff !important;
@@ -257,3 +271,5 @@ body {
 	bottom: 10%;
 	right: 5%;
 }
+
+

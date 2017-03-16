@@ -46,15 +46,14 @@ class GameArticle(models.Model):
 		return self.title
 
 class UserProfile(models.Model):
-<<<<<<< HEAD
-    user = models.OneToOneField(User)
-    # The additional attributes we wish to include.
-    name = models.CharField(max_length=128)
-    age = models.IntegerField(default=0)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
-
+	user = models.OneToOneField(User)
 	# The additional attributes we wish to include.
-	website = website = models.URLField(blank=True)
+	name = models.CharField(max_length=128)
+	age = models.IntegerField(default=0)
+	picture = models.ImageField(upload_to='profile_images', blank=True)
+	
+	# The additional attributes we wish to include.
+	website = models.URLField(blank=True)
 	age = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	
