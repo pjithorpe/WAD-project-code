@@ -272,4 +272,20 @@ body {
 	right: 5%;
 }
 
+#about_page{
+	border-style: ridge;
+	margin-bottom: 5%;
+}
+
+#about_text{
+	padding: 5%;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+#about_logo{
+    width: 20%;
+	padding-bottom: 5%;
+}
+
 

@@ -1,13 +1,34 @@
 {% extends 'factorfiction/base.html' %}
 {% load staticfiles %}
 
-<title> 
-	About 
-</title>
+{% block title_block  %}
+	About Page
+{% endblock %}
 
 {% block main_body_block %}
-	<div>
-		<h1>About</h1>
-		<p>This is a paragraph about FactOrFiction! blah blah blah</p>
+	<div id="about_page">
+		<div class="row">
+			<div class="col-md-12 col-md-offset-3">
+				<h1>Fact or Fiction - About Page</h1>
+			</div>
+		</div>
+		<div class="row" id="about_text">
+			<div class="col-md-12">
+				<p>FACTorFICTION aims to allow all visitors to fight against the 
+				onslaught of 'Fake News' stories that so many people sadly
+				believe.</p>
+				<p>Once registered you will be able to submit news stories you believe
+				could be fake and then other users can investigate and let you know what
+				they think but rating your story as 'Fact' or 'Fiction'.</p>
+				<p>Think you're good at detecting if a story is real or not? Have a go
+				at our FACTorFICTION mini game! See if you can sort the truth from the lies
+				with just a title, short description and photo.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-md-offset-5">
+				<img id="about_logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
+			</div>
+		</div>
 	</div>
 {% endblock %}

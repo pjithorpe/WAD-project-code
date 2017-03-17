@@ -21,7 +21,10 @@
 		
 		<script src="{% static 'js/game.js' %}"></script>
 		
-		<Title>Fact or Fiction</Title>
+		<Title>Fact or Fiction -
+		{% block title_block  %}
+		{% endblock %}
+		</Title>
 	</head>
 
 	<body>
@@ -106,6 +109,7 @@
 								Username: <input type="text" name="username" value="" size="25" />
 								<br />
 								Password: <input type="password" name="password" value="" size="25" />
+								<br />
 								<br />
 								<input type="submit" value="Submit" />
 							</form>
