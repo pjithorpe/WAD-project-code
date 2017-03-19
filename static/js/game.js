@@ -17,6 +17,18 @@ var questions = [
 	["Hamster resurrection: Pet rises from the grave at Easter after being buried in garden", 
 	"Tink the hamster was found ‘cold and lifeless’ in the bottom of her cage and laid to rest by a couple who were looking after her for a friend. But the next day the rodent – who was not dead but hibernating – reappeared as perplexed Les Kilbourne-Smith crushed a pile of old boxes for recycling...",
 	"true", 15, 9, '../../static/images/hamster.jpg'],
+	["WikiLeaks CONFIRMS Hillary Sold Weapons to ISIS… Then Drops Another BOMBSHELL!", 
+	"Now, WikiLeaks is announcing that Hillary Clinton and her State Department were actively arming Islamic jihadists, which includes the Islamic State (ISIS) in Syria. Clinton has repeatedly denied these claims, including during multiple statements while under oath in front of the United States Senate...",
+	"fake", 17, 12, '../../static/images/hillary.jpg'],
+	["Winner Of French Scrabble Championship Does Not Speak French", 
+	"Nigel Richards of New Zealand entered the French-language Scrabble tournament in Louvain, Belgium, in July, and took first place. But he doesn’t speak a word of French. Richards knows his Scrabble, though, and how to win. He’s held several English-language U.S. and world championships...",
+	"true", 19, 8, '../../static/images/scrabble.jpg'],
+	["Man Shoots Armadillo, Bullet Hits Mother-In-Law", 
+	"Sheriff’s deputies in Lee County, Georgia, said McElroy, 54, accidentally shot his mother-in-law with a 9mm pistol when he was trying to shoot an armadillo, WALB.com reports. The armadillo died from the shot, but the bullet ricocheted off the animal, hit a fence and went into the back door of his mother-in-law’s mobile home — a distance of about 100 yards...",
+	"true", 7, 16, '../../static/images/armadillo.jpg'],
+	["Woman arrested for defecating on boss’ desk after winning the lottery", 
+	"NEW YORK – A 41-year-old woman had the winning lottery ticket worth over 3 million dollars on Friday night, but showed up to work anyway on Monday to deliver one last package...",
+	"fake", 12, 14, '../../static/images/lotterywinner.png'],
 ]
 
 var questionCount = 0;

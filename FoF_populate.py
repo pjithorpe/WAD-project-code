@@ -77,7 +77,31 @@ def populate():
 		"answer":"true",
 		"fact": 15,
 		"fiction": 9,
-		"picture": "../../static/images/hamster.jpg"}]
+		"picture": "../../static/images/hamster.jpg"},
+		{"title":"WikiLeaks CONFIRMS Hillary Sold Weapons to ISIS… Then Drops Another BOMBSHELL!",
+		"description":"Now, WikiLeaks is announcing that Hillary Clinton and her State Department were actively arming Islamic jihadists, which includes the Islamic State (ISIS) in Syria. Clinton has repeatedly denied these claims, including during multiple statements while under oath in front of the United States Senate...",
+		"answer":"fake",
+		"fact": 17,
+		"fiction": 12,
+		"picture": "../../static/images/hillary.jpg"},
+		{"title":"Winner Of French Scrabble Championship Does Not Speak French",
+		"description":"Nigel Richards of New Zealand entered the French-language Scrabble tournament in Louvain, Belgium, in July, and took first place. But he doesn’t speak a word of French. Richards knows his Scrabble, though, and how to win. He’s held several English-language U.S. and world championships...",
+		"answer":"true",
+		"fact": 19,
+		"fiction": 8,
+		"picture": "../../static/images/scrabble.jpg"},
+		{"title":"Man Shoots Armadillo, Bullet Hits Mother-In-Law",
+		"description":"Sheriff’s deputies in Lee County, Georgia, said McElroy, 54, accidentally shot his mother-in-law with a 9mm pistol when he was trying to shoot an armadillo, WALB.com reports. The armadillo died from the shot, but the bullet ricocheted off the animal, hit a fence and went into the back door of his mother-in-law’s mobile home — a distance of about 100 yards...",
+		"answer":"true",
+		"fact": 7,
+		"fiction": 16,
+		"picture": "../../static/images/armadillo.jpg"},
+		{"title":"Woman arrested for defecating on boss’ desk after winning the lottery",
+		"description":"NEW YORK – A 41-year-old woman had the winning lottery ticket worth over 3 million dollars on Friday night, but showed up to work anyway on Monday to deliver one last package...",
+		"answer":"fake",
+		"fact": 12,
+		"fiction": 14,
+		"picture": "../../static/images/lotterywinner.png"}]
 		
 	for eachArticle in game_articles:
 		add_game_article(eachArticle["title"], eachArticle["description"], eachArticle["picture"], eachArticle["answer"], eachArticle["fact"], eachArticle["fiction"])
@@ -107,5 +131,5 @@ def add_game_article(title,description,picture, answer, fact=0, fiction=0):
 
  # Start execution here!
 if __name__ == '__main__':
-    print("Starting Rango population script...")
+    print("Starting FactOrFiction population script...")
     populate()

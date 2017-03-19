@@ -12,7 +12,7 @@ def index(request):
 	
 def fofgame(request):
 	return render(request, 'factorfiction/fofgame.html')
-
+	
 def about(request):
 	return render(request, 'factorfiction/about.html')
 

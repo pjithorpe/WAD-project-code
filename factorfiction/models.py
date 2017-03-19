@@ -20,7 +20,7 @@ class Page(models.Model):
         verbose_name_plural = 'pages'
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def __unicode__(self):
         return self.title
