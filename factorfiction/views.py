@@ -6,10 +6,16 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from factorfiction.forms import PageForm, UserForm, UserProfileForm
 from factorfiction.models import UserProfile, Page
+from goose import Goose
+import urllib
+import os
+
 
 def index(request):
-	return render(request, 'factorfiction/index.html',)
-	
+	page_list = Page.objects.order_by('-views')[:3]
+	context_dict = {'pages': page_list}
+	return render(request, 'factorfiction/index.html', context_dict)
+
 def fofgame(request):
 	return render(request, 'factorfiction/fofgame.html')
 	
@@ -52,7 +58,17 @@ def submit_page(request):
 		#Is form valid?
 		if form.is_valid():
 			#Save new page to the database
-			form.save(commit=True)
+			page = form.save(commit=False)
+
+			g = Goose()
+			article = g.extract(url=page.url)
+			urllib.urlretrieve(article.top_image.src, os.path.join("static/images/article_pics", article.title.replace(" ", "")) + ".jpg")
+			page.articleImage = "images/article_pics/" +article.title.replace(" ", "") + ".jpg"
+			page.postedBy = request.user
+			page.title = article.title
+			page.content = article.cleaned_text[:3000]
+			page.save()
+
 			#Now that the page is saved, return to homepage
 			return index(request)
 		else:

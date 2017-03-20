@@ -1,0 +1,12 @@
+{% extends 'factorfiction/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+{{ page.title }}
+{% endblock %}
+{% block body_block %}
+{% if Page %}
+<h1>{{ Page.name }}</h1>
+{% else %}
+The specified article does not exist!
+{% endif %}
+{% endblock %}

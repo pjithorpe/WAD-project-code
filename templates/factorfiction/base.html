@@ -28,30 +28,45 @@
 	</head>
 
 	<body>
-		<div class="headerDiv">
-			<div>
-				<img id="logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
-			</div>
-			<div class="titleDiv">
-				<h1 id="title">FACTorFICTION</h1>
-			</div>
-			<div id = "share-buttons">
-				<!-- Facebook -->
-				<a href="http://www.facebook.com/sharer.php?u=http:/{% url 'index' %}" target="_blank">
-				<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
-				</a>
-				<!-- Twitter -->
-				<a href="https://twitter.com/share?url=http:/{% url 'index' %}&amp;text=FactOrFiction&amp;hashtags=FoF" target="_blank">
-				<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-				</a>
-				<!-- Google+ -->
-				<a href="https://plus.google.com/share?url=http:/{% url 'index' %}" target="_blank">
-				<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
-				</a>
-				<!-- Reddit -->
-				<a href="http://reddit.com/submit?url=http:/{% url 'index' %}&amp;title=Fact Or Fiction" target="_blank">
-				<img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
-				</a>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="headerDiv col-sm-4">
+					<img id="logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo">
+					<h1 id="title">FACTorFICTION</h1>
+				</div>
+
+				<div class="list-group list-group-horizontal col-sm-8">
+					<div class="share-buttons">
+						<!-- Facebook -->
+						<script>
+							function fbs_click() {
+								u = location.href;
+								t = document.title;
+								window.open
+								('http://www.facebook.com/sharer.php?u=' +
+									encodeURIComponent(u) + '&t=' + encodeURIComponent(t),
+									'sharer', 'toolbar=0,status=0,width=626,height=436');
+
+									return false;
+							}
+						</script>
+						<a href="http://www.facebook.com/share.php?u=http://www.example.com" style="text-decoration: none !important;" onclick="return fbs_click()" target="_blank">
+							<img src="{% static "images/facebook.jpg" %}" alt="Share on Facebook">
+						</a>
+						<!-- Twitter -->
+						<a href="https://twitter.com/home?status=http://www.example.com" style="text-decoration: none !important;" onclick="window.open('https://twitter.com/home?status=Fact Or Fiction http://www.example.com via @Snaptube  ',null,'height=290,width=550,status=yes,toolbar=no,menubar=no,location=no'); return false;">
+							<img src="{% static "images/twitter.jpg" %}" alt="Share on Twitter">
+						</a>
+						<!-- Google+ -->
+						<a href="https://plus.google.com/share?url=http://www.example.com" style="text-decoration: none !important;" onclick="window.open('https://plus.google.com/share?url=http://www.example.com',null,'height=626,width=436,status=yes,toolbar=no,menubar=no,location=no'); return false;" target="_blank">
+							<img src="{% static "images/googleplus.jpg" %}" alt="Share on Google+">
+						</a>
+						<!-- Reddit -->
+						<a href="http://www.reddit.com/submit" style="text-decoration: none !important;" onclick="window.open('http://www.reddit.com/submit?url=http://www.example.com',null,'height=900,width=750,status=yes,toolbar=no,menubar=no,location=no'); return false;">
+							<img src="{% static "images/reddit.jpg" %}" alt="Share on Reddit">
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		

@@ -5,13 +5,15 @@ from django.contrib.auth.models import User
 
 class Page(models.Model):
     title = models.CharField(max_length=128)
+    content = models.TextField(default=" ")
     postedBy = models.CharField(max_length=128,default="admin")
-    url = models.URLField()
+    url = models.CharField(max_length=250)
+    articleImage = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
     facts = models.IntegerField(default=0)
     fictions = models.IntegerField(default=0)
 
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Page, self).save(*args, **kwargs)
