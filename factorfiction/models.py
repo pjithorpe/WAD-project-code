@@ -51,11 +51,8 @@ class UserProfile(models.Model):
 	name = models.CharField(max_length=128)
 	age = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
-	
-	# The additional attributes we wish to include.
 	website = models.URLField(blank=True)
-	age = models.IntegerField(default=0)
-	picture = models.ImageField(upload_to='profile_images', blank=True)
+
 	
 	# Override the __unicode__() method to return out something meaningful!
 	def __str__(self):
