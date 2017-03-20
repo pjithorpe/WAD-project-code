@@ -1,9 +1,13 @@
-#title-container {
-	margin-bottom: 10px;
+#logo {
+	float: left;
+	display: inline !important;
+    width: 100px;
 }
 
-#logo {
-    width: 100px;'
+#title {
+	position: absolute;
+	padding-top: 15px;
+	display: inline !important;
 }
 
 body {
@@ -11,36 +15,10 @@ body {
 	margin-right: 5% !important;
 }
 
-.headerDiv {
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 5px;
-}
-
-.headerDiv div {
-	display:table-cell;
-}
-
-.titleDiv {
-	position: relative;
-	top: 30px;
-	width:100%;
-}
-
-#share-buttons{
-	display:inline-block;
-	position: relative;
-	left: 85%;
-}
-
-#share-buttons img {
-	width: 40px;
-	padding: 5px;
-	border: 0;
-	box-shadow: 0;
-	display:inline-block;
-	white-space:nowrap;
+.share-buttons {
+  float: right !important;
+  position: relative;
+  padding-top: 30px;
 }
 
 .navbar-default {
@@ -64,14 +42,14 @@ body {
   color: red !important;
 }
 
-#trending{
+#trending {
 	float: right;
 	min-width: 200px;
 	border-style: outset;
 	padding: 10%;
 }
 
-#signin{
+#signin {
 	min-width: 200px;
 	float: right;
 	margin-top: 5%;
