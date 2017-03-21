@@ -6,39 +6,38 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fact_or_fiction.settings')
 import django
 django.setup()
 from factorfiction.models import Page, GameArticle
+from goose import Goose
+import urllib
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 def populate():
 	articles = [
 		{"url":"http://guelph.ctvnews.ca/sole-candidate-loses-u-of-g-student-president-election-in-narrow-vote-1.3318301",
-		"postedBy": "todo",
-
 		"views" : 43,
 		"facts" : 13,
-		"fictions": 14},
+		"fictions": 14,
+		 "postedBy": "DonaldT"},
 		{"url":"http://www.independent.co.uk/life-style/gadgets-and-tech/news/harambe-memes-cincinnati-zoo-gorilla-shot-dead-rip-a7203356.html",
-		"postedBy": "todo",
-
 		"views" : 17,
 		"facts" : 3,
-		"fictions": 14},
+		"fictions": 14,
+		 "postedBy": "DonaldT"},
 		{"url":"http://www.independent.co.uk/news/world/americas/us-elections/donald-trump-says-hes-too-smart-for-daily-intelligence-briefings-a7468456.html",
-		"postedBy": "todo",
-
 		"views" : 17,
 		"facts" : 13,
-		"fictions": 14},
+		"fictions": 14,
+		 "postedBy":"DavidC"},
 		{"url":"http://time.com/4510849/pepe-the-frog-adl-hate-symbol/",
-		"postedBy": "todo",
-
 		"views" : 17,
 		"facts" : 13,
-		"fictions": 14},
+		"fictions": 14,
+		 "postedBy": "DavidC"},
 		{"url":"http://www.independent.co.uk/news/world/americas/hawaiian-airlines-american-samoa-honolulu-obese-discrimination-weigh-passengers-new-policy-crash-a7375426.html",
-		"postedBy": "todo",
-
 		"views" : 17,
 		"facts" : 13,
-		"fictions": 14} ]
+		"fictions": 14,
+		 "postedBy": "thomasthetank"} ]
 
 	for p in articles:
 		add_page(p["url"], p["postedBy"],  p["views"], p["facts"], p["fictions"])
@@ -108,30 +107,44 @@ def populate():
 	for eachArticle in game_articles:
 		add_game_article(eachArticle["title"], eachArticle["description"], eachArticle["picture"], eachArticle["answer"], eachArticle["fact"], eachArticle["fiction"])
 
+	users = ["DonaldT", "DavidC" , "thomasthetank"]
 
-def add_page( url ,postedBy, views=0, facts=0, fictions=0 ):
-    p = Page.objects.get_or_create(url=url)[0]
-    p.postedBy=postedBy
-    p.url=url
-    p.views=views
-    p.facts=facts
-    p.fictions=fictions
-    p.save()
-    return p
+	for username in users:
+		add_user(username)
+
+def add_user(username):
+	newuser = User.objects.create_user(username, password='password')
+	newuser.save()
+
+def add_page( url , postedBy, views=0, facts=0, fictions=0 ):
+	p = Page.objects.get_or_create(url=url)[0]
+	p.postedBy=postedBy
+	p.url=url
+	p.views=views
+	p.facts=facts
+	p.fictions=fictions
+	g = Goose()
+	article = g.extract(url=url)
+	urllib.urlretrieve(article.top_image.src, os.path.join("static/images/article_pics", article.title.replace(" ", "")) + ".jpg")
+	p.articleImage = "images/article_pics/" + article.title.replace(" ", "") + ".jpg"
+	p.title = article.title
+	p.content = article.cleaned_text[:3000]
+	p.save()
+	return p
 	 
 def add_game_article(title,description,picture, answer, fact=0, fiction=0):
-    games = GameArticle.objects.get_or_create(title=title)[0]
-    games.description=description
-    games.answer=answer
-    games.fact=fact
-    games.fiction=fiction
-    games.picture=picture
-    games.save()
-    return games
+	games = GameArticle.objects.get_or_create(title=title)[0]
+	games.description=description
+	games.answer=answer
+	games.fact=fact
+	games.fiction=fiction
+	games.picture=picture
+	games.save()
+	return games
 
 #
 
  # Start execution here!
 if __name__ == '__main__':
-    print("Starting FactOrFiction population script...")
-    populate()
+	print("Starting FactOrFiction population script...")
+	populate()

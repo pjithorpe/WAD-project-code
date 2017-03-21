@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Page(models.Model):
     title = models.CharField(max_length=128)
@@ -10,6 +11,7 @@ class Page(models.Model):
     url = models.CharField(max_length=250)
     articleImage = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
+    created_date = models.DateTimeField(default=timezone.now)
     facts = models.IntegerField(default=0)
     fictions = models.IntegerField(default=0)
 
