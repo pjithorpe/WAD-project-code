@@ -103,13 +103,18 @@
 			<div class="col-md-3">
 				<div class="container-fluid">
 					<div id="trending">
-						<p>Trending Posts</p>
+						<h1 id="trending_header">Trending Posts</h1>
+						<ul>
+						{% for page in pages %}
+							<li><p><a href="/factorfiction/page/{{ page.slug }}">{{ page.title }}</a></p></li>
+						{% endfor %}
+						</ul>
 					</div>
 
-					<div id="signin">
 						{% if user.is_authenticated %}
-							<p>Signed in.</p>
+							
 						{% else %}
+						<div id="signin">
 							<p>Sign in</p>
 							<form id="login_form" method="post" action="{% url 'login' %}">
 								{% csrf_token %}

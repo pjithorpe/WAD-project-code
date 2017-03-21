@@ -10,6 +10,8 @@ from goose import Goose
 import urllib
 import os
 
+
+
 def show_page(request, page_name_slug):
 # Create a context dictionary which we can pass
 # to the template rendering engine.
