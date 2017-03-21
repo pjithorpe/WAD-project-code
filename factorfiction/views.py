@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from factorfiction.forms import PageForm, UserForm, UserProfileForm
 from factorfiction.models import UserProfile, Page
+from django.template import RequestContext
 from goose import Goose
 import urllib
 import os
@@ -29,6 +30,38 @@ def show_page(request, page_name_slug):
 
 		context_dict['page'] = None
 	return render(request, 'factorfiction/page.html', context_dict)
+	
+def vote_fact(request):
+	context = RequestContext(request)
+	page_id = None
+	if request.method == 'GET':
+		page_id = request.GET['page_id']
+		
+	facts = 0
+	if page_id:
+		page = Page.objects.get(id=int(page_id))
+		if page:
+			facts = page.facts + 1
+			page.facts = facts
+			page.save()
+	
+	return HttpResponse(facts)
+	
+def vote_fiction(request):
+	context = RequestContext(request)
+	page_id = None
+	if request.method == 'GET':
+		page_id = request.GET['page_id']
+		
+	fictions = 0
+	if page_id:
+		page = Page.objects.get(id=int(page_id))
+		if page:
+			fictions = page.fictions + 1
+			page.fictions = fictions
+			page.save()
+	
+	return HttpResponse(fictions)
 
 def index(request):
 	page_list = Page.objects.order_by('-views')[:3]

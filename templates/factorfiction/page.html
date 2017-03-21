@@ -18,9 +18,12 @@
 			<div class="col-md-12">
 				<img src={%static page.articleImage %}  alt="Article image" class="left_image">   
 				{{ page.content }}
-				<p id="posted_by">Posted by: {{page.postedBy}} </p>				
-				<p id="scale_fact">Fact</p>
-				<p id="scale_fiction">Fiction</p>
+				<p id="posted_by"></br>Posted by: {{page.postedBy}} </p>
+				<p id="doyouthink">Do you think this story is:</p>
+				<button id="vote_fact" data-pageid="{{page.id}}" class="btn btn-mini btn-primary" type="button">Fact</button>
+				<button id="vote_fiction" data-pageid="{{page.id}}" class="btn btn-mini btn-primary" type="button">Fiction</button>
+				<b id="fact_count"></br>{{ page.facts }}</b> people have voted this as fact.
+				<b id="fiction_count"></br>{{ page.fictions }}</b> people have voted this as fiction.
 			</div>
 		</div>
 		<div class="row">

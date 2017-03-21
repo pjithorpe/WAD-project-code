@@ -7,3 +7,7 @@ register = template.Library()
 def getGameArticles(article=None):
 	return {'gameArticles': GameArticle.objects.all(),
 			'currentArticle': article}
+
+def get_pages(page=None):
+	return {'pages': Page.objects.all(),
+			}
