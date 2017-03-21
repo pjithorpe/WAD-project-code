@@ -76,12 +76,11 @@ def about(request):
 
 def my_profile(request):
 	currentUser = request.user
-	username = currentUser.id
+	username = currentUser.username
 	
 	if currentUser.is_authenticated:
 		try:
-			articles_list = Page.objects.all()
-			articles_list.filter(postedBy=username)
+			articles_list = Page.objects.filter(postedBy=username)
 			
 			context_dict = {'articles': articles_list}
 
