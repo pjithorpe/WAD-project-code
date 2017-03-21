@@ -11,4 +11,7 @@ urlpatterns = [
 	url(r'^about/$', views.about, name='about'),
 	url(r'^search/$', views.search, name='search'),
 	url(r'^my_profile/$', views.my_profile, name='my_profile'),
+	url(r'^page/(?P<page_name_slug>[\w\-]+)/$',
+		views.show_page, name='show_page'),
+
 ]

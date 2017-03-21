@@ -1,12 +1,32 @@
 {% extends 'factorfiction/base.html' %}
 {% load staticfiles %}
-{% block title_block %}
-{{ page.title }}
+
+{% block title_block  %}
+	Article Page
 {% endblock %}
-{% block body_block %}
-{% if Page %}
-<h1>{{ Page.name }}</h1>
-{% else %}
-The specified article does not exist!
-{% endif %}
+
+{% block main_body_block %}
+	<div id="article_page">
+		<div class="row">
+			<div class="col-md-12" align="center">
+				<div class="page-header">
+					<h1>{{ page.title }}</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="article_text">
+			<div class="col-md-12">
+				<img src={%static page.articleImage %}  alt="Article image" class="left_image">   
+				{{ page.content }}
+				<p id="posted_by">Posted by: {{page.postedBy}} </p>				
+				<p id="scale_fact">Fact</p>
+				<p id="scale_fiction">Fiction</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-md-offset-5">
+				<img id="about_logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
+			</div>
+		</div>
+	</div>
 {% endblock %}
