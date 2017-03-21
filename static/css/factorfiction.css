@@ -171,6 +171,12 @@ body {
 	cursor: pointer;
 }
 
+#form_box{
+	border-style: ridge;
+	margin-top: 3%;
+	padding: 0% 5% 5%;
+}
+
 #answer {
 	border-style: ridge;
 	width: 50%;
@@ -251,12 +257,13 @@ body {
 }
 
 #about_page{
+	margin-top: 3%;
 	border-style: ridge;
 	margin-bottom: 5%;
 }
 
 #about_text{
-	padding: 5%;
+	padding: 1% 5%;
 	text-align: center;
 	font-size: 1.5em;
 }

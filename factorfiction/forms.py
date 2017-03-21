@@ -6,7 +6,7 @@ class PageForm(forms.ModelForm):
 	content = forms.CharField(max_length=128, widget=forms.HiddenInput(), required=False)
 	title = forms.CharField(max_length=128,widget=forms.HiddenInput(), required=False)
 	postedBy = forms.CharField(max_length=128,widget=forms.HiddenInput(), required=False)
-	url = forms.URLField(max_length=200, help_text="Please enter the URL")
+	url = forms.URLField(max_length=200, help_text="Please enter the URL:  ")
 	views = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
 	facts = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
 	fictions = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
