@@ -8,22 +8,19 @@
 {% block main_body_block %}
 <div class="current_article">
 <div>
-	<ul>
 	{% for page in pages %}
-		<li>
-		<a href="{{ page.url }}">{{ page.title }}</a>
-		<div>
-		{{ page.content }}
-		</div>
-		</li>
-		</ul>
-
-		</div>
+		<div class="container">
+			<a href="{{ page.url }}">{{ page.title }}</a>
+			<div>
+				{{ page.content }}
+			</div>
+			
 			<img id="scale" src="{% static "images/scale.jpg" %}" alt="Current opinion" />
 			<p id="scale_fact">Fact</p>
 			<p id="scale_fiction">Fiction</p>
+			
 			<img src={%static page.articleImage %} alt="My image"/>
 			<p id="posted_by">Posted by: {{page.postedBy}} </p>
 		</div>
-{% endfor %}
+	{% endfor %}
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'factorfiction/base.html' %}
+{% load staticfiles %}
+
+{% block title_block  %}
+	My Profile
+{% endblock %}
+
+{% block main_body_block %}
+	<div>
+		<h1>Hello {{ user.username }}!</h1>
+	</div>
+	
+	<div>
+		{% if articles %}
+			<h2>My Posts:</h2>
+			<ul>
+				{% for article in articles %}
+					<li>
+						<h3>{{ article.title }}</h1>
+						<p>{{ article.content }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>There are no articles present.</strong><br />
+		{% endif %}
+	</div>
+{% endblock %}

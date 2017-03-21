@@ -22,22 +22,38 @@ def fofgame(request):
 def about(request):
 	return render(request, 'factorfiction/about.html')
 
+def my_profile(request):
+	currentUser = request.user
+	username = currentUser.id
+	
+	if currentUser.is_authenticated:
+		try:
+			articles_list = Page.objects.all()
+			articles_list.filter(postedBy=username)
+			
+			context_dict = {'articles': articles_list}
+
+			return render(request, 'factorfiction/my_profile.html', context_dict)
+		except Page.DoesNotExist:
+			return HttpResponse("No articles found.")
+	
+	return render(request, 'factorfiction/my_profile.html')
+
 def search(request):
 	if request.method == 'POST':
 	
 		terms = request.POST.get('terms', None)
-		postedBy = request.POST.get('postedBy', None)
+		postedByTerm = request.POST.get('postedBy', None)
 		
 		try:
 			term_list = terms.split(' ')
-			term_list.extend(postedBy)
 	
 			articles_list = Page.objects.all()
 	
-			q = Q(title__icontains=term_list[0]) | Q(postedBy__icontains=term_list[0])
+			q = (Q(title__icontains=term_list[0]) | Q(postedBy=postedByTerm))
 	
 			for term in term_list[1:]:
-				q.add((Q(title__icontains=term) | Q(postedBy__icontains=term)), q.connector)
+				q.add(Q(title__icontains=term), q.connector)
 	
 			articles_list = articles_list.filter(q)
 			
