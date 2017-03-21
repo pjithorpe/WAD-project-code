@@ -6,12 +6,16 @@
 {% endblock %}
 
 {% block main_body_block %}
-	<h1>Register a User Account with FACTorFICTION!</h1>
-	<div>
+	<div id="form_box">
+		<div class="page-header">
+			<h1>Register a User Account with FACTorFICTION!</h1>
+		</div>
+		
 		{% if registered %}
 			Thank you for registering!
 			<a href="/factorfiction/"> Return to the homepage.</a><br />
 		{% else %}
+		
 		<form id="user_form" method = "post" action="{% url 'register' %}" 
 		enctype="multipart/form-data">
 			{% csrf_token %}
