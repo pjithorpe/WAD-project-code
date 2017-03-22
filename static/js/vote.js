@@ -22,5 +22,3 @@ $('#vote_fiction').click(function(){
 });
 		
 });
-	  
-

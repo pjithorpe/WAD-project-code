@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from factorfiction.forms import PageForm, UserForm, UserProfileForm
-from factorfiction.models import UserProfile, Page
+from factorfiction.models import UserProfile, Page, UserVotes
 from django.template import RequestContext
 from goose import Goose
 import urllib
@@ -14,15 +14,25 @@ import os
 
 
 def show_page(request, page_name_slug):
-# Create a context dictionary which we can pass
-# to the template rendering engine.
+	# Create a context dictionary which we can pass
+	# to the template rendering engine.
 	context_dict = {}
+	context_dict['can_vote'] = True
 	try:
 		# Can we find a page name slug with the given name?
 		# If we can't, the .get() method raises a DoesNotExist exception.
 		# So the .get() method returns one model instance or raises an exception.
-		page = Page.objects.get(slug=page_name_slug)
-		context_dict['page'] = page
+		thisPage = Page.objects.get(slug=page_name_slug)
+		context_dict['page'] = thisPage
+		
+		currentUser = request.user
+		
+		if currentUser.is_authenticated:
+			
+			if UserVotes.objects.filter(user=currentUser, page=thisPage).exists():
+				context_dict['can_vote'] = False
+		else:
+			context_dict['can_vote'] = False
 	except Page.DoesNotExist:
 		# We get here if we didn't find the specified category.
 		# Don't	 do anything -
@@ -34,6 +44,8 @@ def show_page(request, page_name_slug):
 def vote_fact(request):
 	context = RequestContext(request)
 	page_id = None
+	currentUser = request.user
+	
 	if request.method == 'GET':
 		page_id = request.GET['page_id']
 		
@@ -44,12 +56,17 @@ def vote_fact(request):
 			facts = page.facts + 1
 			page.facts = facts
 			page.save()
+			
+			userVote = UserVotes.objects.create(user=currentUser, page=page)
+			userVote.save()
 	
 	return HttpResponse(facts)
 	
 def vote_fiction(request):
 	context = RequestContext(request)
 	page_id = None
+	currentUser = request.user
+	
 	if request.method == 'GET':
 		page_id = request.GET['page_id']
 		
@@ -60,6 +77,9 @@ def vote_fiction(request):
 			fictions = page.fictions + 1
 			page.fictions = fictions
 			page.save()
+			
+			userVote = UserVotes.objects.create(user=currentUser, page=page)
+			userVote.save()
 	
 	return HttpResponse(fictions)
 
