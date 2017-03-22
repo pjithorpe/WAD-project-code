@@ -30,6 +30,19 @@ class Page(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+class Comment(models.Model):
+	page = models.ForeignKey(Page, related_name='comments')
+	postedBy = models.ForeignKey(User, on_delete=models.PROTECT)
+	text = models.CharField(max_length = 2000)
+	created_date = models.DateTimeField(default=timezone.now)
+	
+	def __str__(self):
+		return (self.postedBy.username + " - " + str(self.created_date))
+
+	def __unicode__(self):
+		return (self.postedBy.username + " - " + str(self.created_date))
+		
 		
 class GameArticle(models.Model):
 	title = models.CharField(max_length=128)

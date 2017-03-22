@@ -1,5 +1,5 @@
 from django.contrib import admin
-from factorfiction.models import Page, UserProfile, GameArticle
+from factorfiction.models import Page, UserProfile, GameArticle, Comment
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title','url')
@@ -8,6 +8,7 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page, PageAdmin,)
 admin.site.register(GameArticle)
 admin.site.register(UserProfile)
+admin.site.register(Comment)
 
 
 # Register your models here.

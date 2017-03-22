@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from factorfiction.models import Page, UserProfile
+from factorfiction.models import Page, UserProfile, Comment
 
 class PageForm(forms.ModelForm):
 	content = forms.CharField(max_length=128, widget=forms.HiddenInput(), required=False)
@@ -24,7 +24,14 @@ class PageForm(forms.ModelForm):
 				url = 'http://' + url
 				cleaned_data['url'] = url
 				return cleaned_data
-				
+
+class CommentForm(forms.ModelForm):
+	text = forms.CharField(max_length=2000, widget=forms.Textarea, help_text="Add Comment: ")
+	
+	class Meta:
+		model = Comment
+		fields = ('text',)
+		
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget = forms.PasswordInput())
 	

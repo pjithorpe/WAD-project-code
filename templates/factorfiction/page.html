@@ -33,10 +33,47 @@
 				<p id="fiction_count"></br>{{ page.fictions }} people have voted this as fiction. </p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-md-offset-5">
-				<img id="about_logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
-			</div>
+	</div>
+	
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+				<h1>Comments:</h1>
 		</div>
 	</div>
+	<hr>
+	{% for comment in page.comments.all %}
+		<div class="media">
+			<div class="media-left">
+				<img src="{% static "images/logo.jpg" %}" class="media-object" style="width:60px">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading"> <strong>{{ comment.postedBy }}</strong> - {{ comment.created_date }}</h4>
+				<p>{{ comment.text|linebreaks }}</p>
+			</div>
+		</div>
+	{% empty %}
+		<p>No comments here yet :(</p>
+	{% endfor %}
+	
+	{% if user.is_authenticated %}
+	<div id="form_box">
+		<div class = "page-header">
+			<h1>Add a comment:</h1>
+		</div>
+		<form id="comment_form" method="post" action="{% url 'add_comment' pk=page.pk %}">
+			{% csrf_token %}
+			<textarea style="width:600px" name="text" value=""></textarea>
+			<br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	{% endif %}
+	
+	<div class="row">
+		<div class="col-md-12 col-md-offset-5">
+			<img id="about_logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
+		</div>
+	</div>
+	
 {% endblock %}

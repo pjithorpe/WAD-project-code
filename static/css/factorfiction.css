@@ -175,6 +175,10 @@ body {
 	cursor: pointer;
 }
 
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+
 #form_box{
 	border-style: ridge;
 	margin-top: 3%;

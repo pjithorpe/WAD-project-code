@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from factorfiction.forms import PageForm, UserForm, UserProfileForm
-from factorfiction.models import UserProfile, Page, UserVotes
+from factorfiction.forms import PageForm, UserForm, UserProfileForm, CommentForm
+from factorfiction.models import UserProfile, Page, UserVotes, Comment
 from django.template import RequestContext
 from goose import Goose
 import urllib
@@ -29,6 +29,7 @@ def can_user_vote(thisUser, thisPage):
 def show_page(request, page_name_slug):
 	# Create a context dictionary which we can pass
 	# to the template rendering engine.
+
 	context_dict = {}
 	context_dict['can_vote'] = False
 	try:
@@ -48,6 +49,7 @@ def show_page(request, page_name_slug):
 		# the template will display the "no category" message for us.
 
 		context_dict['page'] = None
+
 	return render(request, 'factorfiction/page.html', context_dict)
 	
 def vote_fact(request):
@@ -175,6 +177,24 @@ def submit_page(request):
 	
 	return render(request, 'factorfiction/submit_page.html', {'form': form})
 	
+@login_required
+def add_comment(request, pk):
+	page = get_object_or_404(Page, pk=pk)
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.postedBy = request.user
+			comment.page = page
+			comment.save()
+			
+			return redirect('/factorfiction/page/' + page.slug + '/')
+		else:
+			form = CommentForm()
+			print(form.errors)
+	return redirect('/factorfiction/page/' + page.slug + '/')
+
+
 def register(request):
 	# True when registration succeeds.
 	registered = False
