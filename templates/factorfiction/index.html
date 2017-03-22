@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block main_body_block %}
-<div class="current_article">
+<div class="article_page">
 <div>
 	{% for page in pages %}
 		<div id="article_page">
@@ -23,7 +23,7 @@
 				<img src="{% static "images/logo.jpg" %}" />
 				</object> 
 				{{ page.content }}			
-				</br>Posted by: {{page.postedBy}}				
+				</br></br>Posted by: {{page.postedBy}} on {{page.created_date }}			
 			</div>
 		</div>
 		<div class="row">
