@@ -129,8 +129,11 @@ def submit_page(request):
 
 			g = Goose()
 			article = g.extract(url=page.url)
-			urllib.urlretrieve(article.top_image.src, os.path.join("static/images/article_pics", article.title.replace(" ", "")) + ".jpg")
-			page.articleImage = "images/article_pics/" +article.title.replace(" ", "") + ".jpg"
+			try:
+				urllib.urlretrieve(article.top_image.src, os.path.join("static/images/article_pics", article.title.replace(" ", "")) + ".jpg")
+				page.articleImage = "images/article_pics/" +article.title.replace(" ", "") + ".jpg"
+			except:
+				pass
 			page.postedBy = request.user
 			page.title = article.title
 			page.content = article.cleaned_text[:3000]

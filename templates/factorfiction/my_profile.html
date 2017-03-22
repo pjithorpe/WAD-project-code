@@ -16,7 +16,7 @@
 			<ul>
 				{% for article in articles %}
 					<li>
-						<h3>{{ article.title }}</h1>
+						<h3><a href="/factorfiction/page/{{ article.slug }}">{{ article.title }}</a></h1>
 						<p>{{ article.content }}</p>
 					</li>
 				{% endfor %}
