@@ -84,7 +84,7 @@ def vote_fiction(request):
 	return HttpResponse(fictions)
 
 def index(request):
-	page_list = Page.objects.order_by('-views')[:3]
+	page_list = Page.objects.order_by('-created_date')[:5]
 	context_dict = {'pages': page_list}
 	return render(request, 'factorfiction/index.html', context_dict)
 

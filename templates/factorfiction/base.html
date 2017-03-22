@@ -106,7 +106,7 @@
 					<div id="trending">
 						<h1 id="trending_header">Trending Posts</h1>
 						<ul>
-						{% for page in pages %}
+						{% for page in trendingPages %}
 							<li><p><a href="/factorfiction/page/{{ page.slug }}">{{ page.title }}</a></p></li>
 						{% endfor %}
 						</ul>

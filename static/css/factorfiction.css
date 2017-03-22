@@ -10,6 +10,10 @@
 	display: inline !important;
 }
 
+.article_page{
+	padding-bottom: 10%;
+}
+
 body {
 	margin-left: 5% !important;
 	margin-right: 5% !important;
@@ -294,5 +298,35 @@ body {
 
 #trending li{
 	list-style-type: circle;
+}
+
+#vote_fact{
+	background-color: #0066ff;
+	font-size: 200%;
+	padding: 30px;
+	border-radius: 15%;
+	transition-duration: 0.3s;
+}
+
+#vote_fact:hover{
+	background-color: #8eb8ff;
+	cursor: pointer;
+}
+
+#vote_fiction{
+	background-color: #ff1a1a;
+	font-size: 200%;
+	padding: 30px;
+	border-radius: 15%;
+	transition-duration: 0.3s;
+}
+
+#vote_fiction:hover{
+	background-color: #ff7f7f;
+	cursor: pointer;
+}
+
+#vote_on_page button h1{
+	display: inline-block;
 }
 

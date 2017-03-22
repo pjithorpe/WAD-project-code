@@ -5,29 +5,31 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Page(models.Model):
-    title = models.CharField(max_length=128)
-    content = models.TextField(default=" ")
-    postedBy = models.CharField(max_length=128,default="admin")
-    url = models.CharField(max_length=250)
-    articleImage = models.CharField(max_length=128)
-    views = models.IntegerField(default=0)
-    created_date = models.DateTimeField(default=timezone.now)
-    facts = models.IntegerField(default=0)
-    fictions = models.IntegerField(default=0)
+	title = models.CharField(max_length=128)
+	content = models.TextField(default=" ")
+	postedBy = models.CharField(max_length=128,default="admin")
+	url = models.CharField(max_length=250)
+	articleImage = models.CharField(max_length=128)
+	views = models.IntegerField(default=0)
+	created_date = models.DateTimeField(default=timezone.now)
+	facts = models.IntegerField(default=0)
+	fictions = models.IntegerField(default=0)
+	totalVotes = models.IntegerField(default=0)
 
-    slug = models.SlugField()
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Page, self).save(*args, **kwargs)
+	slug = models.SlugField()
+	def save(self, *args, **kwargs):
+		self.totalVotes = (self.facts + self.fictions)
+		self.slug = slugify(self.title)
+		super(Page, self).save(*args, **kwargs)
 
-    class Meta:
-        verbose_name_plural = 'pages'
+	class Meta:
+		verbose_name_plural = 'pages'
 
-    def __str__(self):
-        return self.title
+	def __str__(self):
+		return self.title
 
-    def __unicode__(self):
-        return self.title
+	def __unicode__(self):
+		return self.title
 		
 class GameArticle(models.Model):
 	title = models.CharField(max_length=128)

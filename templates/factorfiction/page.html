@@ -21,13 +21,16 @@
 				</object>  
 				{{ page.content }}
 				<p id="posted_by"></br>Posted by: {{ page.postedBy }} on {{ page.created_date }}</p>
-				<p id="doyouthink">Do you think this story is:</p>
 				{% if can_vote %}
-					<button id="vote_fact" data-pageid="{{ page.id }}" class="btn btn-mini btn-primary" type="button">Fact</button>
-					<button id="vote_fiction" data-pageid="{{ page.id }}" class="btn btn-mini btn-primary" type="button">Fiction</button>
+					<p id="doyouthink">Do you think this story is:</p>
+					<div class="row" id="vote_on_page">
+						<button id="vote_fact" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fact</button>
+						<h2 id="page_or" class="col-md-1">or</h2>
+						<button id="vote_fiction" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fiction</button>
+					</div>
 				{% endif %}
-				<b id="fact_count"></br>{{ page.facts }}</b> people have voted this as fact.
-				<b id="fiction_count"></br>{{ page.fictions }}</b> people have voted this as fiction.
+				<p id="fact_count"></br>{{ page.facts }} people have voted this as fact.</p> 
+				<p id="fiction_count"></br>{{ page.fictions }} people have voted this as fiction. </p>
 			</div>
 		</div>
 		<div class="row">

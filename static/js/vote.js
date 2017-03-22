@@ -6,6 +6,7 @@ $(document).ready(function() {
 			$('#fact_count').html('</br>' + data);
 			$('#vote_fact').hide();
 			$('#vote_fiction').hide();
+			$('#page_or').hide();
 			$('#doyouthink').hide();
 		});
 	});
@@ -17,6 +18,7 @@ $('#vote_fiction').click(function(){
 		$('#fiction_count').html('</br>' + data);
 		$('#vote_fiction').hide();
 		$('#vote_fact').hide();
+		$('#page_or').hide();
 		$('#doyouthink').hide();
 	});
 });
