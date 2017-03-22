@@ -11,28 +11,37 @@ from goose import Goose
 import urllib
 import os
 
-
+def can_user_vote(thisUser, thisPage):
+	# Check to see if the user has already voted on the page.
+	# If yes, return false; if not, return true.
+	if thisUser.is_authenticated:
+			
+		if UserVotes.objects.filter(user=thisUser, page=thisPage).exists():
+			# If user has already voted on this article
+			return False
+			
+		return True
+		
+	else:
+	
+		return False
 
 def show_page(request, page_name_slug):
 	# Create a context dictionary which we can pass
 	# to the template rendering engine.
 	context_dict = {}
-	context_dict['can_vote'] = True
+	context_dict['can_vote'] = False
 	try:
 		# Can we find a page name slug with the given name?
 		# If we can't, the .get() method raises a DoesNotExist exception.
 		# So the .get() method returns one model instance or raises an exception.
-		thisPage = Page.objects.get(slug=page_name_slug)
-		context_dict['page'] = thisPage
+		currentPage = Page.objects.get(slug=page_name_slug)
+		context_dict['page'] = currentPage
 		
 		currentUser = request.user
+		context_dict['can_vote'] = can_user_vote(currentUser, currentPage)
 		
-		if currentUser.is_authenticated:
-			
-			if UserVotes.objects.filter(user=currentUser, page=thisPage).exists():
-				context_dict['can_vote'] = False
-		else:
-			context_dict['can_vote'] = False
+		
 	except Page.DoesNotExist:
 		# We get here if we didn't find the specified category.
 		# Don't	 do anything -
