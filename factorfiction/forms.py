@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from factorfiction.models import Page, UserProfile, Comment
+from factorfiction.models import Page, UserProfile, Comment, UpdateProfile
 
 class PageForm(forms.ModelForm):
 	content = forms.CharField(max_length=128, widget=forms.HiddenInput(), required=False)
@@ -45,27 +45,7 @@ class UserProfileForm(forms.ModelForm):
 		fields = ('name','age','location','website','bio','picture')
 		
 class UpdateProfile(forms.ModelForm):
-	username = forms.CharField(required=False)
-	email = forms.CharField(required=False)
-	name = forms.CharField(required=False)
-	age = forms.IntegerField(required=False)
-	location = forms.CharField(required=False)
-	website = forms.CharField(required=False)
-	bio = forms.CharField(required=False)
-	picture = forms.ImageField(required=False)
-
 	class Meta:
-	
-		model = User
-		fields = ('username', 'email')
+		model = UpdateProfile
+		fields = ('name','age','location','website','bio','picture')
 		
-		modelProfile = UserProfile
-		fieldsProfile = ('name','age','location','website','bio','picture')
-
-	def save(self, commit=True):
-		user = super(UserProfileForm, self).save(commit=False)
-
-		if commit:
-			user.save()
-
-		return user

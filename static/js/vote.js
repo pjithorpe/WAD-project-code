@@ -17,6 +17,7 @@ $(document).ready(function() {
 			$('#page_or').hide();
 			$('#doyouthink').hide();
 		});
+		window.location.href=window.location.href;
 	});
 
 	$('#vote_fiction').click(function(){
@@ -29,6 +30,7 @@ $(document).ready(function() {
 			$('#page_or').hide();
 			$('#doyouthink').hide();
 		});
+		window.location.href=window.location.href;
 	});
 		
 });

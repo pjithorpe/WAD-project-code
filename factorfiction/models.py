@@ -80,6 +80,23 @@ class UserProfile(models.Model):
 		return self.user.username
 	def __unicode__(self):
 		return self.user.username
+		
+class UpdateProfile(models.Model):
+	user = models.OneToOneField(User)
+	# The additional attributes we wish to include.
+	name = models.CharField(max_length=128)
+	age = models.IntegerField(default=0)
+	picture = models.ImageField(upload_to='profile_images',default = "profile_images/default.png", blank=True)
+	website = models.URLField(blank=True)
+	location = models.CharField(max_length=128, default='')
+	bio = models.CharField(max_length=1500, default='')
+
+	
+	# Override the __unicode__() method to return out something meaningful!
+	def __str__(self):
+		return self.user.username
+	def __unicode__(self):
+		return self.user.username
 
 
 class UserVotes(models.Model):

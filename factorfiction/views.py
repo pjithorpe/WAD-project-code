@@ -154,17 +154,6 @@ def my_profile(request):
 			return HttpResponse("No articles found.")
 	
 	return render(request, 'factorfiction/my_profile.html')
-	
-def update_profile(request):
-	if request.method == 'POST':
-		form = UpdateProfile(request.POST, instance=request.userprofile)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(reverse('my_profile'))
-	else:
-		form = UpdateProfile()
-
-	return render(request, 'factorfiction/update_profile.html', {'update_profile_form': form})
 
 def search(request):
 	if request.method == 'POST':
@@ -293,6 +282,17 @@ def register(request):
 				{'user_form': user_form,
 				'profile_form': profile_form,
 				'registered': registered})
+				
+def update_profile(request):
+	if request.method == 'POST':
+		form = UpdateProfile(request.POST, instance=request.user.userprofile)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('my_profile'))
+	else:
+		form = UpdateProfile()
+
+	return render(request, 'factorfiction/update_profile.html', {'update_profile_form': form})
 
 def user_login(request):
 	# If the request is a HTTP POST, try to pull out the relevant information.
