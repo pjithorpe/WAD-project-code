@@ -29,6 +29,7 @@
 						<button id="vote_fiction" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fiction</button>
 					</div>
 				{% endif %}
+				<canvas id="voteDialCanvas" width="250" height="250" data-totalVotes= "{{ page.totalVotes }}" data-fictions= "{{ page.fictions }}"></canvas>
 				<p id="fact_count"></br>{{ page.facts }} people have voted this as fact.</p> 
 				<p id="fiction_count"></br>{{ page.fictions }} people have voted this as fiction. </p>
 			</div>
