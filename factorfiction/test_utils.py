@@ -20,7 +20,7 @@ def create_user():
 	user.set_password(user.password)
 	user.save()
 
-	user_profile = UserProfile.objects.get_or_create(user=user, age=21, website="http://www.testuser.com")[0]
+	user_profile = UserProfile.objects.get_or_create(user=user, age=21, website="http://www.testuser.com", location="Glasgow", bio="This is my bio")[0]
 	user_profile.save()
 
 	return user, user_profile

@@ -1,9 +1,11 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
+from django.core.management import call_command
 from django.contrib.staticfiles import finders
 from django.conf import settings
 from factorfiction import test_utils
 from factorfiction.models import User, UserProfile, Page
+from factorfiction.forms import UserForm, UserProfileForm, Page
 import os
 
 class GeneralTests(TestCase):
@@ -100,7 +102,7 @@ class RegisterTestCases(TestCase):
 			except:
 				return False
 
-		self.assertIn('Register a user account with factorfiction', response.content)
+		self.assertIn('Register a User Account with FACTorFICTION!', response.content)
 
 		self.assertTrue(isinstance(response.context['user_form'], UserForm))
 
@@ -112,7 +114,7 @@ class RegisterTestCases(TestCase):
 		self.assertEquals(response.context['user_form'].as_p(), user_form.as_p())
 		self.assertEquals(response.context['profile_form'].as_p(), profile_form.as_p())
 
-		self.assertIn('type="submit_page" name="submit_page" value="Register"', response.content)
+		self.assertIn('type="submit" name="submit" value="Register"', response.content)
 		
 class submit_pageTestCases(TestCase):
 
@@ -148,18 +150,14 @@ class my_profileTestCases(TestCase):
 		
 		response = self.client.get(reverse('my_profile'))
 		self.assertIn("testuser123", response.content)
+		self.assertIn("21", response.content)
+		self.assertIn("http://www.testuser.com", response.content)
+		self.assertIn("Glasgow", response.content)
+		self.assertIn("This is my bio", response.content)
 		
 class ModelTests(TestCase):
-	def populate(self):
-		try:
-			from population_script import populate
-			populate()
-		except ImportError:
-			print("The module FoF_Populate does not exist")
-		except NameError:
-			print("The function populate() does not exist or is not correct")
-		except:
-			print("Something went wrong in the populate() function.")
+	def setUp(self):
+		call_command('loaddata', 'testdata.json', verbosity=0)
 			
 	def get_article(self, title):
 		from factorfiction.models import Page
@@ -177,8 +175,7 @@ class ModelTests(TestCase):
 			gameArticle = None
 		return gameArticle
 		
-	def test01_article_added(self):
-		self.populate()
+	def test_article_added(self):
 		article = self.get_article('Sole candidate loses U of G student president election in narrow vote')
 		self.assertIsNotNone(article)
 		
@@ -230,12 +227,7 @@ class ModelTests(TestCase):
 	def test_user_profile_model(self):
 		
 		user, user_profile = test_utils.create_user()
-		
-		all_users = User.objects.all()
-		self.assertEquals(len(all_users), 1)
-		
 		all_profiles = UserProfile.objects.all()
-		self.assertEquals(len(all_profiles), 1)
 		
 		all_profiles[0].user = user
 		all_profiles[0].website = user_profile.website
