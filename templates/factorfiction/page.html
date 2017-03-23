@@ -23,16 +23,32 @@
 				<p id="posted_by"></br>Posted by: <a href="/factorfiction/user/{{ page.postedBy }}">{{page.postedBy}}</a> on {{ page.created_date }}</p>
 				{% if can_vote %}
 					<p id="doyouthink">Do you think this story is:</p>
-					<div class="row" id="vote_on_page">
-						<button id="vote_fact" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fact</button>
-						<h2 id="page_or" class="col-md-1">or</h2>
-						<button id="vote_fiction" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fiction</button>
-					</div>
 				{% endif %}
-				<canvas id="voteDialCanvas" width="250" height="250" data-totalVotes= "{{ page.totalVotes }}" data-fictions= "{{ page.fictions }}"></canvas>
-				<p id="fact_count"></br>{{ page.facts }} people have voted this as fact.</p> 
-				<p id="fiction_count"></br>{{ page.fictions }} people have voted this as fiction. </p>
-				
+			</div>
+		</div>
+		<div class="row" id="vote_on_page">
+			{% if can_vote %}
+				<div class="col-md-4" align="center">
+					<button id="vote_fact" class="col-md-6 col-md-offset-3"  data-pageid="{{ page.id }}" type="button" >Fact</button>
+				</div>
+				<div class="col-md-4" align="center">
+					<canvas id="voteDialCanvas" width="250" height="250" data-totalVotes= "{{ page.totalVotes }}" data-fictions= "{{ page.fictions }}"></canvas> 
+				</div>
+				<div class="col-md-4" align="center">
+					<button id="vote_fiction" class="col-md-6 col-md-offset-3" data-pageid="{{ page.id }}" type="button">Fiction</button>
+				</div>
+			{% else %}
+				<div class="col-md-12" align="center">
+					<canvas id="voteDialCanvas" width="250" height="250" data-totalVotes= "{{ page.totalVotes }}" data-fictions= "{{ page.fictions }}"></canvas> 
+				</div>
+			{% endif %}
+		</div>
+		<div class="row">
+			<div class="col-md-6" align="center">
+				<h3 id="vote_count">{{ page.facts }} people have voted this as <font color="blue">FACT</font>.</h3> 
+			</div>
+			<div class="col-md-6" align="center">
+				<h3 id="vote_count">{{ page.fictions }} people have voted this as <font color="red">FICTION</font>. </h3>
 			</div>
 		</div>
 	</div>
@@ -60,7 +76,7 @@
 			</div>
 		</div>
 	{% empty %}
-		<p>No comments here yet :(</p>
+		<p>No comments here yet.</p>
 	{% endfor %}
 	
 	{% if user.is_authenticated %}
