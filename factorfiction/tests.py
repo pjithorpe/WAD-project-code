@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.staticfiles import finders
 from django.conf import settings
 from factorfiction import test_utils
-from factorfiction.models import User, UserProfile
+from factorfiction.models import User, UserProfile, Page
 import os
 
 class GeneralTests(TestCase):
@@ -27,7 +27,6 @@ class GeneralTests(TestCase):
 		
 	def test_base_template_exists(self):
 		path_to_base = settings.TEMPLATE_DIR + '/factorfiction/base.html'
-		print (path_to_base)
 		self.assertTrue(os.path.isfile(path_to_base))
 
 class IndexTestCases(TestCase):
@@ -113,47 +112,45 @@ class RegisterTestCases(TestCase):
 		self.assertEquals(response.context['user_form'].as_p(), user_form.as_p())
 		self.assertEquals(response.context['profile_form'].as_p(), profile_form.as_p())
 
-		self.assertIn('type="submit" name="submit" value="Register"', response.content)
+		self.assertIn('type="submit_page" name="submit_page" value="Register"', response.content)
 		
-class SubmitTestCases(TestCase):
+class submit_pageTestCases(TestCase):
 
-	def test_submit_success(self):
+	def test_submit_page_success(self):
 		test_utils.create_user()
 		self.client.login(username='testuser123', password='test1234')
 		response = self.client.get(reverse('submit_page'))
 		self.assertEqual(response.status_code, 200)
 		
-	def test_submit_using_template(self):
+	def test_submit_page_using_template(self):
 		test_utils.create_user()
 		self.client.login(username='testuser123', password='test1234')
 		response = self.client.get(reverse('submit_page'))
 		self.assertTemplateUsed(response, 'factorfiction/submit_page.html')
 
-class MyProfileTestCases(TestCase):
+class my_profileTestCases(TestCase):
 
-	def test_myprofile_success(self):
+	def test_my_profile_success(self):
 		test_utils.create_user()
 		self.client.login(username='testuser123', password='test1234')
-		response = self.client.get(reverse('myprofile'))
+		response = self.client.get(reverse('my_profile'))
 		self.assertEqual(response.status_code, 200)
 		
-	def test_myprofile_using_template(self):
+	def test_my_profile_using_template(self):
 		test_utils.create_user()
 		self.client.login(username='testuser123', password='test1234')
-		response = self.client.get(reverse('myprofile'))
-		self.assertTemplateUsed(response, 'factorfiction/myprofile.html')
+		response = self.client.get(reverse('my_profile'))
+		self.assertTemplateUsed(response, 'factorfiction/my_profile.html')
 		
-	def test_myprofile_correct_info(self):
+	def test_my_profile_correct_info(self):
 		test_utils.create_user()
 		self.client.login(username='testuser123', password='test1234')
 		
-		response = self.client.get(reverse('myprofile'))
+		response = self.client.get(reverse('my_profile'))
 		self.assertIn("testuser123", response.content)
-		self.assertIn("21", response.content)
-		self.assertIn("http://www.testuser.com", response.content)
 		
 class ModelTests(TestCase):
-	def setUp(self):
+	def populate(self):
 		try:
 			from FoF_populate import populate
 			populate()
@@ -180,7 +177,8 @@ class ModelTests(TestCase):
 			gameArticle = None
 		return gameArticle
 		
-	def test_article_added(self):
+	def test01_article_added(self):
+		self.populate()
 		article = self.get_article('Sole candidate loses U of G student president election in narrow vote')
 		self.assertIsNotNone(article)
 		
@@ -252,18 +250,18 @@ class LoggedInUserTests(TestCase):
 		response = self.client.get(reverse('index'))
 		
 		self.assertIn(reverse('fofgame'), response.content)
-		self.assertIn(reverse('submit'), response.content)
-		self.assertIn(reverse('search_page'), response.content)
+		self.assertIn(reverse('submit_page'), response.content)
+		self.assertIn(reverse('search'), response.content)
 		self.assertIn(reverse('about'), response.content)
-		self.assertIn(reverse('myprofile'), response.content)
+		self.assertIn(reverse('my_profile'), response.content)
 	
 	def test_url_reference_in_index_page_when_not_logged(self):
 
 		response = self.client.get(reverse('index'))
 
 		self.assertIn(reverse('fofgame'), response.content)
-		self.assertIn(reverse('submit'), response.content)
-		self.assertIn(reverse('search_page'), response.content)
+		self.assertIn(reverse('submit_page'), response.content)
+		self.assertIn(reverse('search'), response.content)
 		self.assertIn(reverse('about'), response.content)
 		self.assertIn(reverse('register'), response.content)
 		
@@ -276,7 +274,6 @@ class LoggedInUserTests(TestCase):
 			except:
 				return False
 
-		print (response.content)
 		try:
 			self.assertIn('wronguser', response.content)
 		except:

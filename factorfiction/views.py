@@ -95,7 +95,7 @@ def vote_fiction(request):
 	return HttpResponse(fictions)
 
 def index(request):
-	page_list = Page.objects.order_by('-created_date')[:5]
+	page_list = Page.objects.order_by('-created_date')[:10]
 	context_dict = {'pages': page_list}
 	return render(request, 'factorfiction/index.html', context_dict)
 
@@ -105,7 +105,7 @@ def fofgame(request):
 def about(request):
 	return render(request, 'factorfiction/about.html')
 
-def my_profile(request):
+def my_profile(request):	
 	currentUser = request.user
 	username = currentUser.username
 	
@@ -113,7 +113,8 @@ def my_profile(request):
 		try:
 			articles_list = Page.objects.filter(postedBy=username)
 			
-			context_dict = {'articles': articles_list}
+			userprofile = UserProfile.objects.get_or_create(user=currentUser)[0]
+			context_dict = {'articles': articles_list, 'userprofile': userprofile}
 
 			return render(request, 'factorfiction/my_profile.html', context_dict)
 		except Page.DoesNotExist:

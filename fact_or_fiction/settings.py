@@ -129,6 +129,7 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+MEDIAFILES_DIRS = [MEDIA_DIR, ]
 
 LOGIN_URL = '/factorfiction/register/'
 

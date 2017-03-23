@@ -358,3 +358,22 @@ body {
 	display: inline-block;
 }
 
+#profile_details{
+	border-style: ridge;
+}
+
+#profile_details h1{
+	padding-left: 1%;
+}
+
+#profile_details h4{
+	padding-top: 0em;
+	padding-bottom: 0em;
+	padding-left: 1.5em;
+}
+
+#profile_image{
+	padding-left: 3%;
+	padding-bottom: 1%;
+}
+

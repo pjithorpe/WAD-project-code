@@ -6,48 +6,47 @@
 {% endblock %}
 
 {% block main_body_block %}
-	<div>
-		<h1>Hello {{ user.username }}!</h1>
+	<h3>Personal Info</h3>
+	<div id="profile_details" class="row">
+		<h3 class="col-md-12">{{ user.username }}</h3>
+		<div class="row">
+			<img class="col-md-4" id="profile_image" src="{{ MEDIA_URL }}{{ userprofile.picture }}" class ="left_image">
+			<h4 class="col-md-6 col-md-offset-2">About:</br></br> {{userprofile.bio}}</h4>
+		</div>
+		<div class="row">
+			<h4 class="col-md-12">Name: {{userprofile.name}}</h4>
+			<h4 class="col-md-12">Age: {{userprofile.age}}</h4>
+			<h4 class="col-md-12">From: {{userprofile.location}}</h4>
+			<h4 class="col-md-6">Website: {{userprofile.website}}</h4>
+			<h4 class="col-md-6">Number of posts: {{articles|length}}
+		</div>
 	</div>
 	
 	<div>
 		{% if articles %}
-			<h2>My Posts:</h2>
+			<h3>My Posts:</h3>
 			<ul>
 				{% for article in articles %}
-					<div id="article_page">
-						<div class="row">
-							<div class="col-md-12" align="center">
-								<div class="page-header">
-									<h1><a href="/factorfiction/page/{{ article.slug }}">{{ article.title }}</a></h1>
-								</div>
-							</div>
-						</div>
-						<div class="row" id="article_text">
-							<div class="col-md-12">
-								<object data={% static page.articleImage %} type="image/jpg" class="left_image">
-									<img src="{% static "images/logo.jpg" %}" class="left_image" />
-								</object>  
-								{{ article.content }}
-								<p id="posted_by"></br>Posted by: {{ article.postedBy }} on {{ article.created_date }}</p>
-								{% if can_vote %}
-									<p id="doyouthink">Do you think this story is:</p>
-									<div class="row" id="vote_on_page">
-										<button id="vote_fact" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fact</button>
-										<h2 id="page_or" class="col-md-1">or</h2>
-										<button id="vote_fiction" class="col-md-2" data-pageid="{{ page.id }}" type="button">Fiction</button>
-									</div>
-								{% endif %}
-								<p id="fact_count"></br>{{ article.facts }} people have voted this as fact.</p> 
-								<p id="fiction_count"></br>{{ article.fictions }} people have voted this as fiction. </p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 col-md-offset-5">
-								<img id="about_logo" src="{% static "images/logo.jpg" %}" alt="Fact or Fiction Logo" />
-							</div>
-						</div>
+					<div class="articleDiv">
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<h2 id="page-header"><a href="/factorfiction/page/{{ page.slug }}">{{ article.title }}</a></h2>
 					</div>
+				</div>
+				<div class="row" id="article_text">
+					<div class="col-md-12">
+						<object data={% static article.articleImage %} type="image/jpg" class="left_image">
+							<img src="{% static "images/logo.jpg" %}" class ="left_image">
+						</object> 
+						<p id="page_content">{{ article.content|slice:":300" }}...</p>		
+					</div>
+				</div>
+			<div class="row">
+					<div class="col-md-12 col-md-offset-5">
+						<p>Posted on {{article.created_date }}</p>
+					</div>
+				</div>
+			</div>
 					
 				{% endfor %}
 			</ul>

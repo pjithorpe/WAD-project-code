@@ -71,6 +71,8 @@ class UserProfile(models.Model):
 	age = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	website = models.URLField(blank=True)
+	location = models.CharField(max_length=128, default='')
+	bio = models.CharField(max_length=1500, default='')
 
 	
 	# Override the __unicode__() method to return out something meaningful!
