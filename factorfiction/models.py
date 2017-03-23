@@ -83,5 +83,5 @@ class UserProfile(models.Model):
 
 
 class UserVotes(models.Model):
-	user = models.ForeignKey(User, on_delete=models.PROTECT)
-	page = models.ForeignKey(Page, on_delete=models.PROTECT)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	page = models.ForeignKey(Page, on_delete=models.CASCADE)

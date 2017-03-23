@@ -11,7 +11,7 @@ class PageForm(forms.ModelForm):
 	facts = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
 	fictions = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
 	slug = forms.CharField(widget=forms.HiddenInput(), required = False)
-	
+
 	class Meta:
 		model = Page
 		fields = ('url',)

@@ -21,6 +21,7 @@
 					<a href={{ page.url }} target="_blank" <strong>...continue reading.</strong></a>
 				</p>
 				<p id="posted_by"></br>Posted by: <a href="/factorfiction/user/{{ page.postedBy }}">{{page.postedBy}}</a> on {{ page.created_date }}</p>
+				<p> Views: {{ page.views }}</p>
 				{% if can_vote %}
 					<p id="doyouthink">Do you think this story is:</p>
 				{% endif %}

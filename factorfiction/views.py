@@ -53,6 +53,8 @@ def show_user_page(request, username):
 
 	return render(request, 'factorfiction/my_profile.html', context_dict)
 
+
+
 def show_page(request, page_name_slug):
 	# Create a context dictionary which we can pass
 	# to the template rendering engine.
@@ -63,12 +65,16 @@ def show_page(request, page_name_slug):
 		# Can we find a page name slug with the given name?
 		# If we can't, the .get() method raises a DoesNotExist exception.
 		# So the .get() method returns one model instance or raises an exception.
-		currentPage = Page.objects.get(slug=page_name_slug)
+		currentPage = Page.objects.filter(slug=page_name_slug)
+		if currentPage.count() > 1:
+			currentPage = currentPage[0]
+		else:
+			currentPage = Page.objects.get(slug=page_name_slug)
 		context_dict['page'] = currentPage
-		
 		currentUser = request.user
 		context_dict['can_vote'] = can_user_vote(currentUser, currentPage)
-		
+		currentPage.views += 1
+		currentPage.save()
 		
 	except Page.DoesNotExist:
 		# We get here if we didn't find the specified category.
