@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from factorfiction.forms import PageForm, UserForm, UserProfileForm, CommentForm
+from factorfiction.forms import PageForm, UserForm, UserProfileForm, CommentForm, UpdateProfile
 from factorfiction.models import UserProfile, Page, UserVotes, Comment
 from django.template import RequestContext
 from goose import Goose
@@ -121,6 +121,17 @@ def my_profile(request):
 			return HttpResponse("No articles found.")
 	
 	return render(request, 'factorfiction/my_profile.html')
+	
+def update_profile(request):
+	if request.method == 'POST':
+		form = UpdateProfile(request.POST, instance=request.userprofile)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('my_profile'))
+	else:
+		form = UpdateProfile()
+
+	return render(request, 'factorfiction/update_profile.html', {'update_profile_form': form})
 
 def search(request):
 	if request.method == 'POST':

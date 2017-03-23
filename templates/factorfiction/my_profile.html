@@ -18,13 +18,14 @@
 			<h4 class="col-md-12">Age: {{userprofile.age}}</h4>
 			<h4 class="col-md-12">From: {{userprofile.location}}</h4>
 			<h4 class="col-md-6">Website: {{userprofile.website}}</h4>
-			<h4 class="col-md-6">Number of posts: {{articles|length}}
+			<h4 class="col-md-3">Number of posts: {{articles|length}}</h4>
+			<a href="{% url 'update_profile' %}"><button class="col-md-2" id="edit_profile" type="button">Edit Profile</button></a>
 		</div>
 	</div>
 	
 	<div>
+	<h3>My Posts:</h3>
 		{% if articles %}
-			<h3>My Posts:</h3>
 			<ul>
 				{% for article in articles %}
 					<div class="articleDiv">
@@ -51,7 +52,7 @@
 				{% endfor %}
 			</ul>
 		{% else %}
-			<strong>There are no articles present.</strong><br />
+			<strong>You haven't posted any articles yet.</strong><br />
 		{% endif %}
 	</div>
 {% endblock %}

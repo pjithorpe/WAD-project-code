@@ -81,6 +81,7 @@ class UserProfile(models.Model):
 	def __unicode__(self):
 		return self.user.username
 
+
 class UserVotes(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
 	page = models.ForeignKey(Page, on_delete=models.PROTECT)

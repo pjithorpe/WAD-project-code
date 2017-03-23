@@ -7,6 +7,7 @@ urlpatterns = [
 	url(r'^submit_page/$', views.submit_page, name='submit_page'),
 	url(r'^page/(?P<pk>\d+)/comment/$', views.add_comment, name='add_comment'),
 	url(r'^register/$', views.register, name='register'),
+	url(r'^update_profile/$', views.update_profile, name='update_profile'),
 	url(r'^login/$', views.user_login, name='login'),
 	url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^about/$', views.about, name='about'),
