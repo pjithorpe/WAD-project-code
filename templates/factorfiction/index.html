@@ -6,32 +6,31 @@
 {% endblock %}
 
 {% block main_body_block %}
-<div class="article_page">
-<div>
-	{% for page in pages %}
-		<div id="article_page">
-		<div class="row">
-			<div class="col-md-12" align="center">
-				<div class="page-header">
-					<h2><a href="/factorfiction/page/{{ page.slug }}">{{ page.title }}</a></h2>
+	<p class="section_header">News</p>
+	<div class="article_page">
+		{% for page in pages %}
+			<div id="article_page">
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<div class="page-header">
+							<h2><a href="/factorfiction/page/{{ page.slug }}">{{ page.title }}</a></h2>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="article_text">
+					<div class="col-md-12">
+						<object data={% static page.articleImage %} type="image/jpg" class="left_image">
+							<img src="{% static "images/logo.jpg" %}" class ="left_image">
+						</object> 
+						<p>{{ page.content|slice:":200" }}...</p>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-md-offset-5">
+						<p>Posted by: {{page.postedBy}} on {{page.created_date }}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row" id="article_text">
-			<div class="col-md-12">
-				<object data={%static page.articleImage %} type="image/jpg" class="left_image">
-				<img src="{% static "images/logo.jpg" %}" />
-				</object> 
-				{{ page.content }}			
-				</br></br>Posted by: {{page.postedBy}} on {{page.created_date }}			
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 col-md-offset-5">
-			</div>
-		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
-</div>
-</div>
 {% endblock %}
