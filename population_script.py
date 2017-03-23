@@ -12,6 +12,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 def populate():
+
+	User.objects.create_superuser('fofadmin', 'myemail@example.com', 'fofpassword')
+
 	articles = [
 		{"url":"http://guelph.ctvnews.ca/sole-candidate-loses-u-of-g-student-president-election-in-narrow-vote-1.3318301",
 		"views" : 43,

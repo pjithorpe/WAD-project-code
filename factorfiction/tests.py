@@ -152,7 +152,7 @@ class my_profileTestCases(TestCase):
 class ModelTests(TestCase):
 	def populate(self):
 		try:
-			from FoF_populate import populate
+			from population_script import populate
 			populate()
 		except ImportError:
 			print("The module FoF_Populate does not exist")

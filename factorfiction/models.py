@@ -69,7 +69,7 @@ class UserProfile(models.Model):
 	# The additional attributes we wish to include.
 	name = models.CharField(max_length=128)
 	age = models.IntegerField(default=0)
-	picture = models.ImageField(upload_to='profile_images', blank=True)
+	picture = models.ImageField(upload_to='profile_images',default = "profile_images/default.png", blank=True)
 	website = models.URLField(blank=True)
 	location = models.CharField(max_length=128, default='')
 	bio = models.CharField(max_length=1500, default='')
