@@ -20,7 +20,7 @@
 				<p id="page_content">{{ page.content }}
 					<a href={{ page.url }} target="_blank" <strong>...continue reading.</strong></a>
 				</p>
-				<p id="posted_by"></br>Posted by: {{ page.postedBy }} on {{ page.created_date }}</p>
+				<p id="posted_by"></br>Posted by: <a href="/factorfiction/user/{{ page.postedBy }}">{{page.postedBy}}</a> on {{ page.created_date }}</p>
 				{% if can_vote %}
 					<p id="doyouthink">Do you think this story is:</p>
 					<div class="row" id="vote_on_page">
@@ -55,7 +55,7 @@
 				{% endif %}
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading"> <strong>{{ comment.postedBy }}</strong> - {{ comment.created_date }}</h4>
+				<h4 class="media-heading"> <strong><a href="/factorfiction/user/{{ comment.postedBy }}">{{comment.postedBy}}</a></strong> - {{ comment.created_date }}</h4>
 				<p>{{ comment.text|linebreaks }}</p>
 			</div>
 		</div>

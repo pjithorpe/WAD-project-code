@@ -17,5 +17,7 @@ urlpatterns = [
 	url(r'^vote_fiction/$', views.vote_fiction, name='vote_fiction'),
 	url(r'^page/(?P<page_name_slug>[\w\-]+)/$',
 		views.show_page, name='show_page'),
+	url(r'^user/(?P<username>[\w\-]+)/$',
+		views.show_user_page, name='show_user_page'),
 
 ]

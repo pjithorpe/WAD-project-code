@@ -19,19 +19,21 @@
 			<h4 class="col-md-12">From: {{userprofile.location}}</h4>
 			<h4 class="col-md-6">Website: {{userprofile.website}}</h4>
 			<h4 class="col-md-3">Number of posts: {{articles|length}}</h4>
+			{% if "/factorfiction/my_profile/"  == request.get_full_path  %}
 			<a href="{% url 'update_profile' %}"><button class="col-md-2" id="edit_profile" type="button">Edit Profile</button></a>
+			{% endif %}
 		</div>
 	</div>
 	
 	<div>
-	<h3>My Posts:</h3>
+	<h3>{{ user.username }}'s Posts:</h3>
 		{% if articles %}
 			<ul>
 				{% for article in articles %}
 					<div class="articleDiv">
 				<div class="row">
 					<div class="col-md-12" align="center">
-						<h2 id="page-header"><a href="/factorfiction/page/{{ page.slug }}">{{ article.title }}</a></h2>
+						<h2 id="page-header"><a href="/factorfiction/page/{{ article.slug }}">{{ article.title }}</a></h2>
 					</div>
 				</div>
 				<div class="row" id="article_text">

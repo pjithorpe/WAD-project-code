@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from factorfiction.forms import PageForm, UserForm, UserProfileForm, CommentForm, UpdateProfile
-from factorfiction.models import UserProfile, Page, UserVotes, Comment
+from factorfiction.models import UserProfile, Page, UserVotes, Comment, User
 from django.template import RequestContext
 from goose import Goose
 import urllib
@@ -25,6 +25,33 @@ def can_user_vote(thisUser, thisPage):
 	else:
 	
 		return False
+
+
+def show_user_page(request, username):
+	# Create a context dictionary which we can pass
+	# to the template rendering engine.
+	context_dict = {}
+	try:
+		# Can we find a page name slug with the given name?
+		# If we can't, the .get() method raises a DoesNotExist exception.
+		# So the .get() method returns one model instance or raises an exception.
+		user = User.objects.get(username=username)
+		if request.user.username == user.username:
+			return redirect("my_profile")
+
+		context_dict['user'] = user
+		articles_list = Page.objects.filter(postedBy=username)
+		userprofile = UserProfile.objects.get_or_create(user=user)[0]
+		context_dict = {'articles': articles_list, 'userprofile': userprofile, 'user' : user}
+
+	except Page.DoesNotExist:
+		# We get here if we didn't find the specified category.
+		# Don't	 do anything -
+		# the template will display the "no category" message for us.
+
+		context_dict['page'] = None
+
+	return render(request, 'factorfiction/my_profile.html', context_dict)
 
 def show_page(request, page_name_slug):
 	# Create a context dictionary which we can pass
