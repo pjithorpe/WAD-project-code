@@ -9,9 +9,7 @@
 	<div id="article_page">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<div class="page-header">
-					<h1>{{ page.title }}</h1>
-				</div>
+				<h1 id="page-header">{{ page.title }}</h1>
 			</div>
 		</div>
 		<div class="row" id="article_text">
@@ -19,7 +17,9 @@
 				<object data={% static page.articleImage %} type="image/jpg" class="left_image">
 					<img src="{% static "images/logo.jpg" %}" class="left_image" />
 				</object>  
-				{{ page.content }}
+				<p id="page_content">{{ page.content }}
+					<a href={{ page.url }} target="_blank" <strong>...continue reading.</strong></a>
+				</p>
 				<p id="posted_by"></br>Posted by: {{ page.postedBy }} on {{ page.created_date }}</p>
 				{% if can_vote %}
 					<p id="doyouthink">Do you think this story is:</p>
@@ -38,7 +38,7 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-12">
-				<h1>Comments:</h1>
+				<h3>Comments:</h3>
 		</div>
 	</div>
 	<hr>
@@ -59,7 +59,7 @@
 	{% if user.is_authenticated %}
 	<div id="form_box">
 		<div class = "page-header">
-			<h1>Add a comment:</h1>
+			<h4>Add a comment:</h4>
 		</div>
 		<form id="comment_form" method="post" action="{% url 'add_comment' pk=page.pk %}">
 			{% csrf_token %}

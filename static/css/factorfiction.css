@@ -53,6 +53,15 @@ body {
 	line-height: 0px;
 }
 
+#page-header {
+	text-align: left;
+}
+
+#page_content {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
 #trending {
 	float: right;
 	min-width: 200px;
@@ -66,7 +75,14 @@ body {
 	margin-top: 5%;
 	border-style: outset;
 	padding: 10%;
-	
+}
+
+.articleDiv {
+	border-style: outset;
+	border-width: 5px;
+	margin-top: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .current_article{
