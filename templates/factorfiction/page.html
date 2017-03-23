@@ -47,7 +47,12 @@
 	{% for comment in page.comments.all %}
 		<div class="media">
 			<div class="media-left">
-				<img src="{% static "images/logo.jpg" %}" class="media-object" style="width:60px">
+				<!-- <img src="{% static "images/logo.jpg" %}" class="media-object" style="width:60px"> -->
+				{% if comment.postedBy.userprofile.picture %}
+					<img src="{{ comment.postedBy.userprofile.picture.url }}" class="media-object" style="width:60px">
+				{% else %}
+					<img src="{% static "images/avatar.png" %}" class="media-object" style="width:60px">
+				{% endif %}
 			</div>
 			<div class="media-body">
 				<h4 class="media-heading"> <strong>{{ comment.postedBy }}</strong> - {{ comment.created_date }}</h4>
