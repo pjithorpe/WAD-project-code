@@ -166,11 +166,13 @@ def search(request):
 	
 			articles_list = Page.objects.all()
 	
-			q = (Q(title__icontains=term_list[0]) | Q(postedBy=postedByTerm))
+			q = Q(title__icontains=term_list[0])
 	
 			for term in term_list[1:]:
 				q.add(Q(title__icontains=term), q.connector)
-	
+			
+			q.add(Q(postedBy=postedByTerm), q.connector)
+			
 			articles_list = articles_list.filter(q)
 			
 			context_dict = {'articles': articles_list}

@@ -104,18 +104,25 @@
 			</div>
 			<div class="col-md-3">
 				<div class="container-fluid">
-					<div id="trending">
-						<h1 id="trending_header">Trending Posts</h1>
+					<div class="sidebar_box">
+						<h3 class="sidebar_header">Trending Posts</h3>
 						<ul>
 						{% for page in trendingPages %}
 							<li><p><a href="/factorfiction/page/{{ page.slug }}">{{ page.title }}</a></p></li>
 						{% endfor %}
 						</ul>
 					</div>
+					
+					<div class="sidebar_box">
+						<h3 class="sidebar_header">Most Active Users</h3>
+						<ul>
+						{% for u in topUsers %}
+							<li><p><a href="/factorfiction/user/{{ u.0 }}">{{ u.0 }} - {{ u.1 }} posts</a></p></li>
+						{% endfor %}
+						</ul>
+					</div>
 
-						{% if user.is_authenticated %}
-							
-						{% else %}
+					{% if not user.is_authenticated %}
 						<div id="signin">
 							<p>Sign in</p>
 							<form id="login_form" method="post" action="{% url 'login' %}">
@@ -127,8 +134,9 @@
 								<br />
 								<input type="submit" value="Submit" />
 							</form>
-						{% endif %}
-					</div>
+						</div>
+					
+					{% endif %}
 				</div>
 			</div>
 		</div>

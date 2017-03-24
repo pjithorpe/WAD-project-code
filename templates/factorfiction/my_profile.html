@@ -6,23 +6,44 @@
 {% endblock %}
 
 {% block main_body_block %}
-	<h3>Personal Info</h3>
-	<div id="profile_details" class="row">
-		<h3 class="col-md-12">{{ user.username }}</h3>
+	<h3 style="margin-top: 0;">Personal Info</h3>
+	<div id="profile_details" class="container-fluid">
 		<div class="row">
-			<img class="col-md-4" id="profile_image" src="{{ MEDIA_URL }}{{ userprofile.picture }}" class ="left_image">
-			<h4 class="col-md-6 col-md-offset-2">About:</br></br> {{userprofile.bio}}</h4>
-		</div>
-		<div class="row">
-			<h4 class="col-md-12">Name: {{userprofile.name}}</h4>
-			<h4 class="col-md-12">Age: {{userprofile.age}}</h4>
-			<h4 class="col-md-12">From: {{userprofile.location}}</h4>
-			<h4 class="col-md-6">Website: {{userprofile.website}}</h4>
-			<h4 class="col-md-3">Number of posts: {{articles|length}}</h4>
-			{% if "/factorfiction/my_profile/"  == request.get_full_path  %}
-			<a href="{% url 'update_profile' %}"><button class="col-md-2" id="edit_profile" type="button">Edit Profile</button></a>
-			{% endif %}
-		</div>
+			<div class="col-md-6">
+				<h2 style="margin-left: 5px;">{{ user.username }}</h2>
+				<div class="row">
+					<img id="profile_image" src="{{ MEDIA_URL }}{{ userprofile.picture }}" class ="left_image">
+				</div>
+				<div class="row">
+					<h4>Name: {{ userprofile.name }}</h4>
+				</div>
+				<div class="row">
+					<h4>Age: {{ userprofile.age }}</h4>
+				</div>
+				<div class="row">
+					<h4>From: {{ userprofile.location }}</h4>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<br/>
+				<br/>
+				<div class="row">
+					<h4>Website: {{ userprofile.website }}</h4>
+				</div>
+				<div class="row">
+					<h4>About:</h4>
+					<p id="profile_about">{{ userprofile.bio }}</p>
+				</div>
+				<div class="row">
+					<h4>Number of posts: {{ articles|length }}</h4>
+				</div>
+				<div class="row">
+					{% if "/factorfiction/my_profile/"  == request.get_full_path  %}
+						<a href="{% url 'update_profile' %}"><button id="edit_profile" type="button">Edit Profile</button></a>
+					{% endif %}
+				</div>
+			</div>
+		</div>	
 	</div>
 	
 	<div>
