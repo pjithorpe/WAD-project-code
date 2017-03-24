@@ -1,3 +1,4 @@
+// Game articles list
 var questions = [
 	["Pope Francis Shocks World, Endorses Donald Trump for President, Releases Statement", 
 	"News outlets around the world are reporting on the news that Pope Francis has made the unprecedented decision to endorse a US presidential candidate. His statement in support of Donald Trump was released from the Vatican this evening: 'I have been hesitant to offer any kind of support for either candidate in the US presidential election but I now feel that to not voice my concern would be a dereliction of my duty as the Holy See...",
@@ -34,17 +35,21 @@ var questions = [
 var questionCount = 0;
 var correctAnswer = 0;
 
-
+// Play the game
 $(document).ready(function() {
 		$("#answer").hide();
 		$("#game_home").hide();
 		$("#game_title").html(questions[questionCount][0]);
 		$("#game_description").html(questions[questionCount][1]);
 		$("#game_picture").attr('src', questions[questionCount][5]);
+		
+		//If fact pressed then check if this is correct
         $("#game_fact").click(function() {
 			$("#game_picture").hide();
 			$("#game_fact").prop('disabled', true);
 			$("#game_fiction").prop('disabled', true);
+			
+			//If answer correct then display answer and number of people who have voted this
 			if(questions[questionCount][2] == "true"){
 				$("#your_answer").html("Correct! This story is a Fact!");
 				$("#current_answer_fact").html("Fact: " + (((questions[questionCount][3])/(questions[questionCount][3]+questions[questionCount][4]))*100).toFixed(2) + "%");
@@ -52,6 +57,8 @@ $(document).ready(function() {
 				questions[questionCount][3] = questions[questionCount][3]+1;
 				correctAnswer += 1;
 			}
+			
+			//If incorrect then tell user this and what other people have said
 			else{
 				$("#your_answer").html("Incorrect! This story is actually Fiction!");
 				$("#current_answer_fact").html("Fact: " + (((questions[questionCount][3])/(questions[questionCount][3]+questions[questionCount][4]))*100).toFixed(2) + "%");
@@ -60,10 +67,14 @@ $(document).ready(function() {
 			}
 			$("#answer").show();
         });
+		
+		//If fact pressed then check if this is correct
 		$("#game_fiction").click(function() {
 			$("#game_picture").hide();
 			$("#game_fact").prop('disabled', true);
 			$("#game_fiction").prop('disabled', true);
+			
+			//If answer correct then display answer and number of people who have voted this
 			if(questions[questionCount][2] == "fake"){
 				$("#your_answer").html("Correct! This story is Fiction!");
 				$("#current_answer_fact").html("Fact: " + (((questions[questionCount][3])/(questions[questionCount][3]+questions[questionCount][4]))*100).toFixed(2) + "%");
@@ -71,6 +82,8 @@ $(document).ready(function() {
 				questions[questionCount][3] = questions[questionCount][4]+1
 				correctAnswer += 1;
 			}
+			
+			//If incorrect then tell user this and what other people have said
 			else{
 				$("#your_answer").html("Incorrect! This story is actually a Fact!");
 				$("#current_answer_fact").html("Fact: " + (((questions[questionCount][3])/(questions[questionCount][3]+questions[questionCount][4]))*100).toFixed(2) + "%");
@@ -79,6 +92,8 @@ $(document).ready(function() {
 			}
 			$("#answer").show();
         });
+		
+		//Loads up new article and options
 		$("#game_next").click(function() {
 			questionCount += 1;
 			if(questionCount == questions.length){
