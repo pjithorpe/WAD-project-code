@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fact_or_fiction.settings')
-
 import django
-
 django.setup()
 from factorfiction.models import Page, GameArticle, UserProfile, Comment
 from goose import Goose
@@ -14,6 +11,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+
+#this script populates our site with users, userprofiles, articles and a super user to save time.
+#"goose" is used to take data from the news sites so an internet connection is required.
 def populate():
     print "Super user 'fofadmin' password 'fofpassword' added..."
     User.objects.create_superuser('fofadmin', 'myemail@example.com', 'fofpassword')
@@ -174,40 +174,40 @@ def populate():
     user_comments = [
                     {"page": Page.objects.get(id=3),
                    "user": User.objects.get(id=2),
-                   "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                   "text": "I can drive 10 miles, walk 50 feet. Turn around and before I know it, I'd be back home. Or would I? I'm not sure but that's just how it is."},
                     {"page": Page.objects.get(id=2),
                    "user": User.objects.get(id=2),
-                   "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                   "text": "If I roll once and you roll twice. What does that mean?"},
                     {"page": Page.objects.get(id=1),
                      "user": User.objects.get(id=2),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "If you really wanted to do that, then why wouldn't you do that? Instead you do this. It makes no sense."},
                     {"page": Page.objects.get(id=2),
                      "user": User.objects.get(id=2),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "Sometimes I wonder if I really can. But then I think to myself, maybe I can't. But if I could, that would be good. Maybe it's all a lie?"},
                     {"page": Page.objects.get(id=3),
                      "user": User.objects.get(id=1),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "I like to wax my legs and stick the hair on my back. Why? Because it keeps my back warm. There's method in my madness."},
                     {"page": Page.objects.get(id=1),
                      "user": User.objects.get(id=2),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "If I could I would. Wether or not I should, I still would."},
                     {"page": Page.objects.get(id=2),
                      "user": User.objects.get(id=3),
-                     "text":"BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text":"I see you have something to talk about. Well, I have something to shout about. Infact something to sing about. But I'll just keep quiet and let you carry on."},
                     {"page": Page.objects.get(id=3),
-                   "user": User.objects.get(id=2),
-                   "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "user": User.objects.get(id=2),
+                    "text": "I see trees of green........ red roses too I see em bloom..... for me and for you And I think to myself.... what a wonderful world."},
                     {"page": Page.objects.get(id=5),
                      "user": User.objects.get(id=4),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "In my life there's been heartache and pain I don't know if I can face it again Can't stop now, I've traveled so far To change this lonely life."},
                     {"page": Page.objects.get(id=4),
                      "user": User.objects.get(id=4),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "Now this is the story all about how My life got flipped, turned upside down"},
                     {"page": Page.objects.get(id=2),
                      "user": User.objects.get(id=4),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"},
+                     "text": "Don't want to close my eyes I don't want to fall asleep Cause I'd miss you babe And I don't want to miss a thing "},
                     {"page": Page.objects.get(id=1),
                      "user": User.objects.get(id=2),
-                     "text": "BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH"}
+                     "text": "People always told me be careful of what you do And dont go around breaking young girls' hearts"}
                 ]
 
 
