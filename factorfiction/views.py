@@ -165,7 +165,7 @@ def search(request):
 			for term in term_list[1:]:
 				q.add(Q(title__icontains=term), q.connector)
 			
-			q.add(Q(postedBy=postedByTerm), q.connector)
+			q.add(Q(postedBy__icontains=postedByTerm), q.connector)
 			
 			articles_list = articles_list.filter(q)
 			

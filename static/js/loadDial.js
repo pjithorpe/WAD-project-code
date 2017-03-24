@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded',buildDial,false);
 			}
 			context.closePath();
 			context.lineWidth = 8;
-			context.strokeStyle = '#550000';
+			context.strokeStyle = '#c5c5c5';
 			context.stroke();
 		}
 		
