@@ -287,12 +287,12 @@ def register(request):
 				
 def update_profile(request):
 	if request.method == 'POST':
-		form = UpdateProfile(request.POST, instance=request.user.userprofile)
+		form = UpdateProfile(request.POST, instance=request.user.userprofile, initial ={"name": request.user.userprofile.name, 'age':request.user.userprofile.age, 'location':request.user.userprofile.location, 'website':request.user.userprofile.website, 'bio':request.user.userprofile.bio, 'picture':request.user.userprofile.picture})
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('my_profile'))
 	else:
-		form = UpdateProfile()
+		form = UpdateProfile(initial ={"name": request.user.userprofile.name, 'age':request.user.userprofile.age, 'location':request.user.userprofile.location, 'website':request.user.userprofile.website, 'bio':request.user.userprofile.bio, 'picture':request.user.userprofile.picture})
 
 	return render(request, 'factorfiction/update_profile.html', {'update_profile_form': form})
 
