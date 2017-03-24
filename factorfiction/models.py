@@ -4,6 +4,9 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+# An entity representing a news article.
+# Has a many-to-one relationship with users
+# (Many articles are written by each user)
 class Page(models.Model):
 	title = models.CharField(max_length=128)
 	content = models.TextField(default=" ")
@@ -31,6 +34,10 @@ class Page(models.Model):
 	def __unicode__(self):
 		return self.title
 
+# An entity representing a comment on news
+# article.
+# Has a many-to-one relationship with pages
+# (Many comments are made on each article)
 class Comment(models.Model):
 	page = models.ForeignKey(Page, related_name='comments')
 	postedBy = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -43,7 +50,9 @@ class Comment(models.Model):
 	def __unicode__(self):
 		return (self.postedBy.username + " - " + str(self.created_date))
 		
-		
+
+# An entity representing a news story for
+# the fact or fiction game.
 class GameArticle(models.Model):
 	title = models.CharField(max_length=128)
 	description = models.CharField(max_length=5000)
@@ -64,6 +73,9 @@ class GameArticle(models.Model):
 	def __unicode__(self):
 		return self.title
 
+# An entity representing a user's profile.
+# Has a one-to-one relationship with users
+# (Each profile belongs to one user)
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 	# The additional attributes we wish to include.
@@ -80,7 +92,9 @@ class UserProfile(models.Model):
 		return self.user.username
 	def __unicode__(self):
 		return self.user.username
-		
+
+# A temporary model used to store info when
+# a user is editing their profile.
 class UpdateProfile(models.Model):
 	user = models.OneToOneField(User)
 	# The additional attributes we wish to include.
@@ -98,7 +112,11 @@ class UpdateProfile(models.Model):
 	def __unicode__(self):
 		return self.user.username
 
-
+# A middle model used to implement a many-
+# to-many relationship between Users and
+# Pages. This keeps track of which pages
+# the user has voted on so that they may
+# only vote on each page once.
 class UserVotes(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	page = models.ForeignKey(Page, on_delete=models.CASCADE)
