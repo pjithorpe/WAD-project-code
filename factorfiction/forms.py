@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from factorfiction.models import Page, UserProfile, Comment, UpdateProfile
 
+#Form for displaying all information of a page
 class PageForm(forms.ModelForm):
 	content = forms.CharField(max_length=128, widget=forms.HiddenInput(), required=False)
 	title = forms.CharField(max_length=128,widget=forms.HiddenInput(), required=False)
@@ -25,6 +26,7 @@ class PageForm(forms.ModelForm):
 				cleaned_data['url'] = url
 				return cleaned_data
 
+#Form for commenting up to a max of 2000 characters
 class CommentForm(forms.ModelForm):
 	text = forms.CharField(max_length=2000, widget=forms.Textarea, help_text="Add Comment: ")
 	
@@ -32,6 +34,7 @@ class CommentForm(forms.ModelForm):
 		model = Comment
 		fields = ('text',)
 		
+#Used to get the standard Django user information on registration
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget = forms.PasswordInput())
 	
@@ -39,11 +42,13 @@ class UserForm(forms.ModelForm):
 		model = User
 		fields = ('username','email','password')
 		
+#Used when a new user is registering their profile details
 class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
 		fields = ('name','age','location','website','bio','picture')
 		
+#Form to allow users to update their existing profile details
 class UpdateProfile(forms.ModelForm):
 	class Meta:
 		model = UpdateProfile

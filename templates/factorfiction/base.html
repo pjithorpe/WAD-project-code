@@ -117,7 +117,9 @@
 						<h3 class="sidebar_header">Most Active Users</h3>
 						<ul>
 						{% for u in topUsers %}
-							<li><p><a href="/factorfiction/user/{{ u.0 }}">{{ u.0 }} - {{ u.1 }} posts</a></p></li>
+							{% if not u.0 == '' %}
+								<li><p><a href="/factorfiction/user/{{ u.0 }}">{{ u.0 }} - {{ u.1 }} posts</a></p></li>
+							{% endif %}
 						{% endfor %}
 						</ul>
 					</div>
