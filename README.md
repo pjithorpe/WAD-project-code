@@ -1,2 +1,5 @@
 # WAD-project-code
-Group Django project for WAD.
+
+'Fact or Fiction' news website.
+
+Group Django project for Web Apps Development coursework.
