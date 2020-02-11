@@ -4,4 +4,4 @@ cssselect
 jieba
 beautifulsoup
 nltk
-Django==1.10.5
+Django==1.11.28
